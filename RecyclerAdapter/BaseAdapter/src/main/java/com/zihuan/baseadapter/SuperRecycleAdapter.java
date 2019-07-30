@@ -10,7 +10,6 @@ import java.util.List;
 public class SuperRecycleAdapter extends RecyclerView.Adapter<RecyclerViewHolder> {
 
     public List baseDatas = new ArrayList();
-    public int mListSize;
 
     @Override
     public RecyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -34,9 +33,12 @@ public class SuperRecycleAdapter extends RecyclerView.Adapter<RecyclerViewHolder
     }
 
     public void update(List list) {
-        mListSize = list.size();
         baseDatas.clear();
         baseDatas.addAll(list);
         notifyDataSetChanged();
+    }
+
+    public int getListSize() {
+        return baseDatas.size();
     }
 }
