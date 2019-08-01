@@ -1,45 +1,42 @@
 package com.zihuan.baseadapter
 
-import android.content.Intent
 import android.os.Bundle
-import android.support.v4.content.ContextCompat.startActivity
 import android.support.v7.app.AppCompatActivity
-import android.view.View
+import android.support.v7.widget.GridLayoutManager
 import com.scwang.smartrefresh.header.MaterialHeader
 import com.scwang.smartrefresh.layout.SmartRefreshLayout
 import com.scwang.smartrefresh.layout.api.RefreshLayout
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_headrecycle.*
+import kotlinx.android.synthetic.main.recycle_layout.view.*
 
 
-class MainActivity : AppCompatActivity(),ViewOnItemClick {
-    override fun setOnItemClickListener(view: View?, postion: Int) {
-        startActivity(Intent(this,HeadRecyclerActivity::class.java))
-    }
-
+class HeadRecyclerActivity2 : AppCompatActivity() {
     var mDemoData = ArrayList<String>()
-    lateinit var demoAdapter: DemoAdapter
+    var Item = ArrayList<ArrayList<Entity>>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        demoAdapter = DemoAdapter(this)
+        setContentView(R.layout.activity_headrecycle2)
         for (i in 0..30) {
-            mDemoData.add("昵称$i")
+            mDemoData.add("head$i")
+            var list = ArrayList<Entity>()
+            list.add(Entity())
+            list.add(Entity())
+            list.add(Entity())
+            list.add(Entity())
+            list.add(Entity())
+            list.add(Entity())
+            list.add(Entity())
+            list.add(Entity())
+            list.add(Entity())
+            Item.add(list)
         }
-        rav_layout.buildVerticalLayout(demoAdapter)
-                .setOnRefreshLoadMoreListener(object : OnRefreshLoadMoreListener {
-                    override fun onRefresh(refreshLayout: RefreshLayout) {
-//                        刷新回调
-                    }
-
-                    override fun onLoadMore(refreshLayout: RefreshLayout) {
-//                        加载更多回调
-
-                    }
-
-                })
-                .setData(mDemoData)
+        var adapter = RecycleMultipleAdapter(this)
+        var layoutManager = StickyHeaderGridLayoutManager(2)
+        rav_layout.buildGridLayout(adapter, 2)
+                .setLayoutManager(layoutManager)
+        adapter.upDate(mDemoData, Item)
     }
 
     companion object {

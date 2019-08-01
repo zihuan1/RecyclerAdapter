@@ -10,11 +10,10 @@ import android.view.ViewGroup;
 import java.util.List;
 
 
-
 /**
  * Created by zihuan
  */
-public abstract class RecyclerAdapter extends SuperRecycleAdapter {
+public abstract class RecyclerAdapter extends SuperRecycleAdapter<RecyclerViewHolder> {
     ViewOnItemClick onItemClick;
     ViewOnItemLongClick longClick;
     public Context mContext;

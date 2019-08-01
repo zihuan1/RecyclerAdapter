@@ -15,7 +15,7 @@ import android.view.ViewGroup;
  * Created by zihuan
  * 建议纯文字使用
  */
-public class RecyclerBindAdapter extends SuperRecycleAdapter {
+public class RecyclerBindAdapter extends SuperRecycleAdapter<RecyclerViewHolder> {
     ViewOnItemClick onItemClick;
     ViewOnItemLongClick longClick;
     public Context mContext;

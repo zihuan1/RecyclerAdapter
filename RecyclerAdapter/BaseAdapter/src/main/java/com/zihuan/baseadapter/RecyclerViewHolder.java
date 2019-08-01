@@ -7,7 +7,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
-
 /**
  * Created by zihuan on 2016/9/1.
  */
@@ -58,6 +57,7 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder implements View.
             view.setOnLongClickListener(this);
         }
     }
+
 
     @Override
     public void onClick(View v) {

@@ -7,17 +7,17 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SuperRecycleAdapter extends RecyclerView.Adapter<RecyclerViewHolder> {
+public class SuperRecycleAdapter<T extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<T> {
 
     public List baseDatas = new ArrayList();
 
     @Override
-    public RecyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public T onCreateViewHolder(ViewGroup parent, int viewType) {
         return null;
     }
 
     @Override
-    public void onBindViewHolder(RecyclerViewHolder holder, int position) {
+    public void onBindViewHolder(T holder, int position) {
 
     }
 

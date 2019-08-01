@@ -5,7 +5,7 @@ import android.content.Context
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import com.zihuan.baseadapter.RecyclerViewHolder
+import com.zihuan.baseadapter.*
 
 @SuppressLint("StaticFieldLeak")
 object RecycleLayoutKt {
@@ -17,7 +17,7 @@ object RecycleLayoutKt {
         this.layoutManager = RecycleLayoutKt.RecycleViewBuilder.getLinLayoutManager(LinearLayoutManager.HORIZONTAL, this)
     }
 
-    fun RecyclerView.initHorizontal(adapter: RecyclerView.Adapter<RecyclerViewHolder>) {
+    fun RecyclerView.initHorizontal(adapter: RecyclerView.Adapter<*>) {
         initHorizontal()
         this.adapter = adapter
     }
@@ -30,7 +30,7 @@ object RecycleLayoutKt {
         return this.layoutManager as LinearLayoutManager
     }
 
-    fun RecyclerView.initVertical(adapter: RecyclerView.Adapter<RecyclerViewHolder>) {
+    fun RecyclerView.initVertical(adapter: RecyclerView.Adapter<*>) {
         initVertical()
         this.adapter = adapter
     }
@@ -42,7 +42,7 @@ object RecycleLayoutKt {
         return this.layoutManager as GridLayoutManager
     }
 
-    fun RecyclerView.initGrid(count: Int, adapter: RecyclerView.Adapter<RecyclerViewHolder>) {
+    fun RecyclerView.initGrid(count: Int, adapter: RecyclerView.Adapter<*>) {
         initGrid(count)
         this.adapter = adapter
     }

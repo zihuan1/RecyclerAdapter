@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.graphics.drawable.Drawable
 import android.os.Build
+import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.AttributeSet
@@ -14,6 +15,7 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener
 import com.zihuan.app.base.recycler.RecycleLayoutKt.initGrid
 import com.zihuan.app.base.recycler.RecycleLayoutKt.initHorizontal
 import com.zihuan.app.base.recycler.RecycleLayoutKt.initVertical
+import kotlinx.android.synthetic.main.activity_headrecycle.*
 import kotlinx.android.synthetic.main.recycle_layout.view.*
 
 /***
@@ -34,22 +36,22 @@ class RecycleAssViewLayout : FrameLayout {
     }
 
 
-    lateinit var mActivity: Activity
+    private lateinit var mActivity: Activity
     private fun createView() {
         var view = View.inflate(context, R.layout.recycle_layout, null)
         addView(view)
         mActivity = context as Activity
     }
 
-    fun buildVerticalLayout(adapter: SuperRecycleAdapter): Builder {
+    fun buildVerticalLayout(adapter: SuperRecycleAdapter<*>): Builder {
         return Builder(re_view, mActivity, sr_layout).defBuild(adapter, LinearLayoutManager.VERTICAL)
     }
 
-    fun buildHorizontalLayout(adapter: SuperRecycleAdapter): Builder {
+    fun buildHorizontalLayout(adapter: SuperRecycleAdapter<*>): Builder {
         return Builder(re_view, mActivity, sr_layout).defBuild(adapter, LinearLayoutManager.HORIZONTAL)
     }
 
-    fun buildGridLayout(adapter: SuperRecycleAdapter, type: Int): Builder {
+    fun buildGridLayout(adapter: SuperRecycleAdapter<*>, type: Int): Builder {
         return Builder(re_view, mActivity, sr_layout).defBuild(adapter, type)
     }
 
@@ -67,13 +69,26 @@ class RecycleAssViewLayout : FrameLayout {
 
         //    https://www.jianshu.com/p/3f30fb2c4e47
         private var scrollToBottom = false
-        private lateinit var rAdapter: SuperRecycleAdapter
-        internal fun defBuild(adapter: SuperRecycleAdapter, type: Int): Builder {
+        private lateinit var rAdapter: SuperRecycleAdapter<*>
+        internal fun defBuild(adapter: SuperRecycleAdapter<*>, type: Int): Builder {
             rAdapter = adapter
             when (type) {
                 LinearLayoutManager.VERTICAL -> re_view.initVertical(rAdapter)
                 LinearLayoutManager.HORIZONTAL -> re_view.initHorizontal(rAdapter)
-                else -> re_view.initGrid(type, rAdapter)
+                else ->
+                    re_view.initGrid(type, rAdapter)
+            }
+            //如果是多带head的grid
+            if (adapter is StickyHeaderGridAdapter && re_view.layoutManager !is StickyHeaderGridLayoutManager) {
+                var layoutManager = re_view.layoutManager as GridLayoutManager
+                layoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+                    override fun getSpanSize(position: Int): Int {
+                        return when (adapter.getItemViewType(position)) {
+                            0 -> type
+                            else -> 1
+                        }
+                    }
+                }
             }
             return this
         }
@@ -128,6 +143,11 @@ class RecycleAssViewLayout : FrameLayout {
             var rvd = RecycleViewDivider(mContext, LinearLayoutManager.VERTICAL, draw)
             rvd.setDrawBotton(isDrawBottom)
             getRView().addItemDecoration(rvd)
+            return this
+        }
+
+        fun setLayoutManager(layoutManager: RecyclerView.LayoutManager): Builder {
+            getRView().layoutManager = layoutManager
             return this
         }
 

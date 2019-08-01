@@ -16,7 +16,7 @@ import java.util.List;
 /***
  * 多布局适配器
  */
-public abstract class XManyLayoutAdapter extends RecyclerView.Adapter<RecyclerViewHolder> {
+public abstract class ManyLayoutAdapter extends RecyclerView.Adapter<RecyclerViewHolder> {
     public List baseDatas = new ArrayList();
     ViewOnItemClick onItemClick;
     ViewOnItemLongClick longClick;
@@ -24,19 +24,19 @@ public abstract class XManyLayoutAdapter extends RecyclerView.Adapter<RecyclerVi
 
     public int mListSize;
 
-    public XManyLayoutAdapter(Object object) {
+    public ManyLayoutAdapter(Object object) {
         instanceofObj(object);
     }
 
     //为butter准备的构造
-    public XManyLayoutAdapter(List baseDatas, Object object) {
+    public ManyLayoutAdapter(List baseDatas, Object object) {
         this.baseDatas.clear();
         this.baseDatas.addAll(baseDatas);
         instanceofObj(object);
     }
 
 
-    public XManyLayoutAdapter(Object object, ViewOnItemClick viewOnItemClick) {
+    public ManyLayoutAdapter(Object object, ViewOnItemClick viewOnItemClick) {
         this.baseDatas.clear();
         this.baseDatas.addAll(baseDatas);
         onItemClick = viewOnItemClick;
@@ -68,7 +68,6 @@ public abstract class XManyLayoutAdapter extends RecyclerView.Adapter<RecyclerVi
         RecyclerViewHolder holder = new RecyclerViewHolder(view, onItemClick, longClick, viewType);
         return holder;
     }
-
 
 
     //将数据与界面进行绑定的操作
