@@ -65,7 +65,7 @@ public abstract class ManyLayoutAdapter extends RecyclerView.Adapter<RecyclerVie
     public RecyclerViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         View view;
         view = LayoutInflater.from(viewGroup.getContext()).inflate(getLayoutResId().get(viewType), viewGroup, false);
-        RecyclerViewHolder holder = new RecyclerViewHolder(view, onItemClick, longClick, viewType);
+        RecyclerViewHolder holder = new RecyclerViewHolder(view, viewType);
         return holder;
     }
 

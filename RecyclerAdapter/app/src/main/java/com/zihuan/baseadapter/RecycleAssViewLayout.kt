@@ -15,7 +15,6 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener
 import com.zihuan.app.base.recycler.RecycleLayoutKt.initGrid
 import com.zihuan.app.base.recycler.RecycleLayoutKt.initHorizontal
 import com.zihuan.app.base.recycler.RecycleLayoutKt.initVertical
-import kotlinx.android.synthetic.main.activity_headrecycle.*
 import kotlinx.android.synthetic.main.recycle_layout.view.*
 
 /***
@@ -55,6 +54,10 @@ class RecycleAssViewLayout : FrameLayout {
         return Builder(re_view, mActivity, sr_layout).defBuild(adapter, type)
     }
 
+    fun getRecyclerView():RecyclerView {
+
+        return re_view
+    }
 
     class Builder {
         private var mContext: Context

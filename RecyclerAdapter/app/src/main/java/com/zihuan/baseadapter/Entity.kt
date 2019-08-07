@@ -1,6 +1,9 @@
 package com.zihuan.baseadapter
 
 class Entity {
-    var title = ""
+
+
+    var mTitle = ""
     var res = 0
+
 }

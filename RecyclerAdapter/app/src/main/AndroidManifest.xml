@@ -9,15 +9,18 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".HeadRecyclerActivity" />
-        <activity android:name=".HeadRecyclerActivity2" />
+        <activity android:name=".activity.HeadRecyclerActivity" />
+        <activity android:name=".activity.HeadRecyclerActivity2" />
+        <activity android:name=".activity.RefreshLoadMoreActivity" />
+        <activity android:name=".activity.LeftSlidDeleteActivity" />
+        <activity android:name=".activity.LeftSlidDeleteActivity2" />
 
     </application>
 

@@ -1,32 +1,23 @@
-package com.zihuan.baseadapter
+package com.zihuan.baseadapter.activity
 
-import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.view.View
-import android.widget.Toast
 import com.scwang.smartrefresh.header.MaterialHeader
 import com.scwang.smartrefresh.layout.SmartRefreshLayout
-import com.scwang.smartrefresh.layout.api.RefreshLayout
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter
-import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener
+import com.zihuan.baseadapter.Entity
+import com.zihuan.baseadapter.R
+import com.zihuan.baseadapter.RecycleMultipleAdapter
+import com.zihuan.baseadapter.StickyHeaderGridLayoutManager
 import kotlinx.android.synthetic.main.activity_headrecycle.*
 
 
-class HeadRecyclerActivity : AppCompatActivity(), ViewOnHeadClick {
-    override fun setOnHeadClick(view: View?, position: Int) {
-        Toast.makeText(this, mDemoData[position], Toast.LENGTH_SHORT).show()
-    }
-
-    override fun setOnItemClick(view: View?, section: Int, position: Int) {
-        Toast.makeText(this, "section $section position $position", Toast.LENGTH_SHORT).show()
-    }
-
+class HeadRecyclerActivity2 : AppCompatActivity() {
     var mDemoData = ArrayList<String>()
     var Item = ArrayList<ArrayList<Entity>>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_headrecycle)
+        setContentView(R.layout.activity_headrecycle2)
         for (i in 0..30) {
             mDemoData.add("head$i")
             var list = ArrayList<Entity>()
@@ -42,23 +33,10 @@ class HeadRecyclerActivity : AppCompatActivity(), ViewOnHeadClick {
             Item.add(list)
         }
         var adapter = RecycleMultipleAdapter(this)
+        var layoutManager = StickyHeaderGridLayoutManager(2)
         rav_layout.buildGridLayout(adapter, 2)
-                .setOnRefreshLoadMoreListener(object : OnRefreshLoadMoreListener {
-                    override fun onRefresh(refreshLayout: RefreshLayout) {
-//                        刷新回调
-                    }
-
-                    override fun onLoadMore(refreshLayout: RefreshLayout) {
-//                        加载更多回调
-
-                    }
-
-                })
-
+                .setLayoutManager(layoutManager)
         adapter.upDate(mDemoData, Item)
-        bt_button.setOnClickListener {
-            startActivity(Intent(this, HeadRecyclerActivity2::class.java))
-        }
     }
 
     companion object {

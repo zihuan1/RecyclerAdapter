@@ -1,6 +1,9 @@
 package com.zihuan.baseadapter;
 
+import android.app.Activity;
+import android.content.Context;
 import android.databinding.ViewDataBinding;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
@@ -17,47 +20,34 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder implements View.
     ViewOnItemLongClick longClick;
     ViewDataBinding dataBinding;
 
-    public RecyclerViewHolder(View view, ViewOnItemClick onItemClick, ViewOnItemLongClick longClick) {
+    public RecyclerViewHolder(View view) {
         super(view);
-        this.view = view;
-        if (onItemClick != null) {
-            this.onItemClick = onItemClick;
-            view.setOnClickListener(this);
-        }
-        if (longClick != null) {
-            this.longClick = longClick;
-            view.setOnLongClickListener(this);
-        }
+        instanceofObj(view);
     }
 
-    public RecyclerViewHolder(View view, ViewOnItemClick onItemClick, ViewOnItemLongClick longClick, ViewDataBinding binding) {
+    public RecyclerViewHolder(View view, ViewDataBinding binding) {
         super(view);
-        this.view = view;
         dataBinding = binding;
-        if (onItemClick != null) {
-            this.onItemClick = onItemClick;
-            view.setOnClickListener(this);
-        }
-        if (longClick != null) {
-            this.longClick = longClick;
-            view.setOnLongClickListener(this);
-        }
+        instanceofObj(view);
     }
 
-    public RecyclerViewHolder(View view, ViewOnItemClick onItemClick, ViewOnItemLongClick longClick, int type) {
+    public RecyclerViewHolder(View view, int type) {
         super(view);
-        this.view = view;
         holderType = type;
-        if (onItemClick != null) {
-            this.onItemClick = onItemClick;
+        instanceofObj(view);
+    }
+
+    private void instanceofObj(View view) {
+        this.view = view;
+        if (view.getContext() instanceof ViewOnItemClick) {
+            this.onItemClick = (ViewOnItemClick) view.getContext();
             view.setOnClickListener(this);
         }
-        if (longClick != null) {
-            this.longClick = longClick;
+        if (view.getContext() instanceof ViewOnItemLongClick) {
+            this.longClick = (ViewOnItemLongClick) view.getContext();
             view.setOnLongClickListener(this);
         }
     }
-
 
     @Override
     public void onClick(View v) {

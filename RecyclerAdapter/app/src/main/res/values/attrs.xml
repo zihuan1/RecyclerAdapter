@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ZHLeftScrollView">
+        <attr name="left_width" format="integer" />
+        <attr name="right_width" format="integer" />
+        <attr name="move_range" format="integer" />
+        <attr name="zh_margin" format="integer" />
+    </declare-styleable>
+</resources>

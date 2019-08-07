@@ -57,7 +57,7 @@ public class RecyclerBindAdapter extends SuperRecycleAdapter<RecyclerViewHolder>
     public RecyclerViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(mRes, viewGroup, false);
         ViewDataBinding binding = DataBindingUtil.bind(view);
-        RecyclerViewHolder holder = new RecyclerViewHolder(view, onItemClick, longClick, binding);
+        RecyclerViewHolder holder = new RecyclerViewHolder(view, binding);
         return holder;
     }
 

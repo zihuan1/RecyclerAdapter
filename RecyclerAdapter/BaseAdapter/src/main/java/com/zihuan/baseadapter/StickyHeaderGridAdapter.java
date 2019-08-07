@@ -132,7 +132,7 @@ public abstract class StickyHeaderGridAdapter extends SuperRecycleAdapter<Recycl
 //            default:
 //                throw new InvalidParameterException("Invalid viewType: " + viewType);
         }
-        return new RecyclerViewHolder(view, null, null);
+        return new RecyclerViewHolder(view);
 
     }
 

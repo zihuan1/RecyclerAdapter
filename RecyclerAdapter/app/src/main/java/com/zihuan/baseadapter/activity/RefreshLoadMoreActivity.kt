@@ -1,8 +1,7 @@
-package com.zihuan.baseadapter
+package com.zihuan.baseadapter.activity
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v4.content.ContextCompat.startActivity
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import com.scwang.smartrefresh.header.MaterialHeader
@@ -10,12 +9,15 @@ import com.scwang.smartrefresh.layout.SmartRefreshLayout
 import com.scwang.smartrefresh.layout.api.RefreshLayout
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener
+import com.zihuan.baseadapter.DemoAdapter
+import com.zihuan.baseadapter.R
+import com.zihuan.baseadapter.ViewOnItemClick
 import kotlinx.android.synthetic.main.activity_main.*
 
 
-class MainActivity : AppCompatActivity(),ViewOnItemClick {
+class RefreshLoadMoreActivity : AppCompatActivity(), ViewOnItemClick {
     override fun setOnItemClickListener(view: View?, postion: Int) {
-        startActivity(Intent(this,HeadRecyclerActivity::class.java))
+        startActivity(Intent(this, HeadRecyclerActivity::class.java))
     }
 
     var mDemoData = ArrayList<String>()
