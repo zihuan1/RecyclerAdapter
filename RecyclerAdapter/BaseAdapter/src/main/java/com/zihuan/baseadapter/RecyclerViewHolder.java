@@ -61,7 +61,7 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder implements View.
         if (longClick != null) {
             longClick.setOnItemLongClickListener(v, getAdapterPosition());
         }
-        return false;
+        return true;
     }
 
     public View getView(int id) {
