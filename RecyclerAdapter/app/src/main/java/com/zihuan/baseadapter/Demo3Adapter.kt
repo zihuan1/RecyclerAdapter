@@ -1,14 +1,13 @@
 package com.zihuan.baseadapter
 
 import android.content.Context
-import android.util.Log
 import android.util.TypedValue
 import android.view.View
 import android.widget.TextView
 import com.zihuan.baseadapter.slideswaphelper.SlideSwapAction
 
 class Demo3Adapter(`object`: Any?) : SpecialHolderAdapter<Demo3Adapter.LeftScrollHolder>(`object`) {
-
+    var mListener = `object`
 
     override fun convert(holder: LeftScrollHolder, position: Int, context: Context) {
         var entity = getEntity<String>(position)
@@ -26,10 +25,10 @@ class Demo3Adapter(`object`: Any?) : SpecialHolderAdapter<Demo3Adapter.LeftScrol
     }
 
     override fun createHolder(view: View): LeftScrollHolder {
-        return LeftScrollHolder(view)
+        return LeftScrollHolder(view, mListener!!)
     }
 
-    class LeftScrollHolder(view: View) : RecyclerViewHolder(view), SlideSwapAction {
+    class LeftScrollHolder(view: View, obj: Any) : RecyclerViewHolder(view, obj), SlideSwapAction {
         override fun getActionWidth(): Float {
             return dp2px(70f)
         }

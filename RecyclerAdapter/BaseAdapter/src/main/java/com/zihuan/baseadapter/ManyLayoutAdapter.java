@@ -23,6 +23,7 @@ public abstract class ManyLayoutAdapter extends RecyclerView.Adapter<RecyclerVie
     Activity mActivity;
 
     public int mListSize;
+    private Object mListener;
 
     public ManyLayoutAdapter(Object object) {
         instanceofObj(object);
@@ -36,14 +37,9 @@ public abstract class ManyLayoutAdapter extends RecyclerView.Adapter<RecyclerVie
     }
 
 
-    public ManyLayoutAdapter(Object object, ViewOnItemClick viewOnItemClick) {
-        this.baseDatas.clear();
-        this.baseDatas.addAll(baseDatas);
-        onItemClick = viewOnItemClick;
-    }
-
 
     private void instanceofObj(Object object) {
+        mListener = object;
         if (object instanceof Fragment) {
             mActivity = ((Fragment) object).getActivity();
         } else if (object instanceof Activity) {
@@ -65,7 +61,7 @@ public abstract class ManyLayoutAdapter extends RecyclerView.Adapter<RecyclerVie
     public RecyclerViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         View view;
         view = LayoutInflater.from(viewGroup.getContext()).inflate(getLayoutResId().get(viewType), viewGroup, false);
-        RecyclerViewHolder holder = new RecyclerViewHolder(view, viewType);
+        RecyclerViewHolder holder = new RecyclerViewHolder(view, viewType,mListener);
         return holder;
     }
 

@@ -26,7 +26,10 @@ public abstract class RecyclerAdapter extends SuperRecycleAdapter<RecyclerViewHo
         baseDatas.addAll(list);
     }
 
+    private Object mListener;
+
     private void instanceofObj(Object object) {
+        mListener = object;
         if (object instanceof Fragment) {
             mContext = ((Fragment) object).getContext();
         } else if (object instanceof Activity) {
@@ -34,6 +37,7 @@ public abstract class RecyclerAdapter extends SuperRecycleAdapter<RecyclerViewHo
         } else if (object instanceof View) {
             mContext = ((View) object).getContext();
         }
+
     }
 
 
@@ -42,7 +46,7 @@ public abstract class RecyclerAdapter extends SuperRecycleAdapter<RecyclerViewHo
     public RecyclerViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         int res = getLayoutResId();
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(res, viewGroup, false);
-        RecyclerViewHolder holder = new RecyclerViewHolder(view);
+        RecyclerViewHolder holder = new RecyclerViewHolder(view, mListener);
         return holder;
     }
 

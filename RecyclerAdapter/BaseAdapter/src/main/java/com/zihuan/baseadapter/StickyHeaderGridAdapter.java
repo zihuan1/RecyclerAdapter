@@ -33,10 +33,12 @@ public abstract class StickyHeaderGridAdapter extends SuperRecycleAdapter<Recycl
 
     public Context mContext;
     ViewOnHeadClick onHeadClick;
-//    ViewOnItemClick onItemClick;
+    //    ViewOnItemClick onItemClick;
 //    ViewOnItemLongClick longClick;
+    private Object mListener;
 
     private void instanceofObj(Object object) {
+        mListener = object;
         if (object instanceof Fragment) {
             mContext = ((Fragment) object).getContext();
         } else if (object instanceof Activity) {
@@ -132,7 +134,7 @@ public abstract class StickyHeaderGridAdapter extends SuperRecycleAdapter<Recycl
 //            default:
 //                throw new InvalidParameterException("Invalid viewType: " + viewType);
         }
-        return new RecyclerViewHolder(view);
+        return new RecyclerViewHolder(view,mListener);
 
     }
 

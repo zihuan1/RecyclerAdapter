@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
-
 /**
  * Created by zihuan
  * 建议纯文字使用
@@ -25,6 +24,7 @@ public class RecyclerBindAdapter extends SuperRecycleAdapter<RecyclerViewHolder>
         instanceofObj(object, layoutRes);
     }
 
+    private Object mListener;
 
     public RecyclerBindAdapter(Object object, int layoutRes, boolean disableClick) {
         instanceofObj(object, layoutRes);
@@ -35,6 +35,7 @@ public class RecyclerBindAdapter extends SuperRecycleAdapter<RecyclerViewHolder>
     }
 
     private void instanceofObj(Object object, int res) {
+        mListener = object;
         mRes = res;
         if (object instanceof Fragment) {
             mContext = ((Fragment) object).getContext();
@@ -57,7 +58,7 @@ public class RecyclerBindAdapter extends SuperRecycleAdapter<RecyclerViewHolder>
     public RecyclerViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(mRes, viewGroup, false);
         ViewDataBinding binding = DataBindingUtil.bind(view);
-        RecyclerViewHolder holder = new RecyclerViewHolder(view, binding);
+        RecyclerViewHolder holder = new RecyclerViewHolder(view, binding, mListener);
         return holder;
     }
 

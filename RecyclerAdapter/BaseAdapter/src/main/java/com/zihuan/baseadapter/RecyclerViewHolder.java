@@ -20,30 +20,30 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder implements View.
     ViewOnItemLongClick longClick;
     ViewDataBinding dataBinding;
 
-    public RecyclerViewHolder(View view) {
+    public RecyclerViewHolder(View view,Object object) {
         super(view);
-        instanceofObj(view);
+        instanceofObj(view,object);
     }
 
-    public RecyclerViewHolder(View view, ViewDataBinding binding) {
+    public RecyclerViewHolder(View view, ViewDataBinding binding,Object object) {
         super(view);
         dataBinding = binding;
-        instanceofObj(view);
+        instanceofObj(view,object);
     }
 
-    public RecyclerViewHolder(View view, int type) {
+    public RecyclerViewHolder(View view, int type,Object object) {
         super(view);
         holderType = type;
-        instanceofObj(view);
+        instanceofObj(view,object);
     }
 
-    private void instanceofObj(View view) {
+    private void instanceofObj(View view,Object object) {
         this.view = view;
-        if (view.getContext() instanceof ViewOnItemClick) {
+        if (object instanceof ViewOnItemClick) {
             this.onItemClick = (ViewOnItemClick) view.getContext();
             view.setOnClickListener(this);
         }
-        if (view.getContext() instanceof ViewOnItemLongClick) {
+        if (object instanceof ViewOnItemLongClick) {
             this.longClick = (ViewOnItemLongClick) view.getContext();
             view.setOnLongClickListener(this);
         }

@@ -14,9 +14,10 @@ import java.util.List;
  * Created by zihuan
  */
 public abstract class SpecialHolderAdapter<T extends RecyclerViewHolder> extends SuperRecycleAdapter<T> {
-    ViewOnItemClick onItemClick;
-    ViewOnItemLongClick longClick;
+//    ViewOnItemClick onItemClick;
+//    ViewOnItemLongClick longClick;
     public Context mContext;
+    private Object mListener;
 
     public SpecialHolderAdapter(Object object) {
         instanceofObj(object);
@@ -30,12 +31,12 @@ public abstract class SpecialHolderAdapter<T extends RecyclerViewHolder> extends
         } else if (object instanceof View) {
             mContext = ((View) object).getContext();
         }
-        if (object instanceof ViewOnItemClick) {
-            this.onItemClick = (ViewOnItemClick) object;
-        }
-        if (object instanceof ViewOnItemLongClick) {
-            this.longClick = (ViewOnItemLongClick) object;
-        }
+//        if (object instanceof ViewOnItemClick) {
+//            this.onItemClick = (ViewOnItemClick) object;
+//        }
+//        if (object instanceof ViewOnItemLongClick) {
+//            this.longClick = (ViewOnItemLongClick) object;
+//        }
     }
 
     //    T mType;
