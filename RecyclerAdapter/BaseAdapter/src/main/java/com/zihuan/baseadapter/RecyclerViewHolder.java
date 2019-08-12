@@ -40,11 +40,11 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder implements View.
     private void instanceofObj(View view,Object object) {
         this.view = view;
         if (object instanceof ViewOnItemClick) {
-            this.onItemClick = (ViewOnItemClick) view.getContext();
+            this.onItemClick = (ViewOnItemClick) object;
             view.setOnClickListener(this);
         }
         if (object instanceof ViewOnItemLongClick) {
-            this.longClick = (ViewOnItemLongClick) view.getContext();
+            this.longClick = (ViewOnItemLongClick) object;
             view.setOnLongClickListener(this);
         }
     }
