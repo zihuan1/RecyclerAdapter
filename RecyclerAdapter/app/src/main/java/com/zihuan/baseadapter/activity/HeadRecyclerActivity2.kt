@@ -18,7 +18,7 @@ class HeadRecyclerActivity2 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_headrecycle2)
-        for (i in 0..30) {
+        for (i in 0..10) {
             mDemoData.add("head$i")
             var list = ArrayList<Entity>()
             list.add(Entity())
@@ -37,6 +37,7 @@ class HeadRecyclerActivity2 : AppCompatActivity() {
         rav_layout.buildGridLayout(adapter, 2)
                 .setLayoutManager(layoutManager)
         adapter.upDate(mDemoData, Item)
+        rav_layout.getRecyclerView().isNestedScrollingEnabled=true
     }
 
     companion object {

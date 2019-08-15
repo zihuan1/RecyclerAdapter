@@ -68,6 +68,9 @@ class RecycleAssViewLayout : FrameLayout {
             re_view = re_view1
             sr_layout = sr_layout1
             mContext = context
+            sr_layout.setEnableRefresh(false)
+            sr_layout.setEnableLoadMore(false)
+
         }
 
         //    https://www.jianshu.com/p/3f30fb2c4e47
@@ -82,17 +85,17 @@ class RecycleAssViewLayout : FrameLayout {
                     re_view.initGrid(type, rAdapter)
             }
             //如果是多带head的grid
-            if (adapter is StickyHeaderGridAdapter && re_view.layoutManager !is StickyHeaderGridLayoutManager) {
-                var layoutManager = re_view.layoutManager as GridLayoutManager
-                layoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
-                    override fun getSpanSize(position: Int): Int {
-                        return when (adapter.getItemViewType(position)) {
-                            0 -> type
-                            else -> 1
-                        }
-                    }
-                }
-            }
+//            if (adapter is StickyHeaderGridAdapter && re_view.layoutManager !is StickyHeaderGridLayoutManager) {
+//                var layoutManager = re_view.layoutManager as GridLayoutManager
+//                layoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+//                    override fun getSpanSize(position: Int): Int {
+//                        return when (adapter.getItemViewType(position)) {
+//                            0 -> type
+//                            else -> 1
+//                        }
+//                    }
+//                }
+//            }
             return this
         }
 

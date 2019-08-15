@@ -4,11 +4,12 @@ import android.content.Context
 import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
+import com.zihuan.autoscrollview.ZHAutoScrollView
 
 class Demo2Adapter(`object`: Any?) : RecyclerAdapter(`object`) {
     override fun convert(holder: RecyclerViewHolder, position: Int, context: Context) {
         var entity = getEntity<String>(position)
-        var scroll_item = holder.getTView<ZHLeftScrollView>(R.id.scroll_item)
+        var scroll_item = holder.getTView<ZHAutoScrollView>(R.id.scroll_item)
         var item_text = holder.getTView<TextView>(R.id.item_text)
         var rightLayout = holder.getView(R.id.right_Layout)
         item_text.text = entity

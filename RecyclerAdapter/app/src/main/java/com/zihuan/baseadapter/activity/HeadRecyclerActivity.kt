@@ -1,19 +1,14 @@
 package com.zihuan.baseadapter.activity
 
-import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.helper.ItemTouchHelper
 import android.view.View
 import android.widget.Toast
 import com.scwang.smartrefresh.header.MaterialHeader
 import com.scwang.smartrefresh.layout.SmartRefreshLayout
-import com.scwang.smartrefresh.layout.api.RefreshLayout
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter
-import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener
-import com.zihuan.baseadapter.Entity
-import com.zihuan.baseadapter.R
-import com.zihuan.baseadapter.RecycleMultipleAdapter
-import com.zihuan.baseadapter.ViewOnHeadClick
+import com.zihuan.baseadapter.*
 import kotlinx.android.synthetic.main.activity_headrecycle.*
 
 
@@ -46,21 +41,29 @@ class HeadRecyclerActivity : AppCompatActivity(), ViewOnHeadClick {
             Item.add(list)
         }
         var adapter = RecycleMultipleAdapter(this)
-        rav_layout.buildGridLayout(adapter, 2)
-                .setOnRefreshLoadMoreListener(object : OnRefreshLoadMoreListener {
-                    override fun onRefresh(refreshLayout: RefreshLayout) {
-//                        刷新回调
-                    }
-
-                    override fun onLoadMore(refreshLayout: RefreshLayout) {
-//                        加载更多回调
-
-                    }
-
-                })
+        rav_layout.buildVerticalLayout(adapter)
+//        rav_layout.buildGridLayout(adapter, 2)
+                .setLoadEnabled(false)
+                .setPullEnabled(false)
+//                .setOnRefreshLoadMoreListener(object : OnRefreshLoadMoreListener {
+//                    override fun onRefresh(refreshLayout: RefreshLayout) {
+////                        刷新回调
+//                    }
+//
+//                    override fun onLoadMore(refreshLayout: RefreshLayout) {
+////                        加载更多回调
+//
+//                    }
+//                })
 
         adapter.upDate(mDemoData, Item)
+
+        itemTouchHelper = ItemTouchHelper(DragItemTouchHelper(adapter, Item as List<ArrayList<Any>>))
+        itemTouchHelper.attachToRecyclerView(rav_layout.getRecyclerView())
+
     }
+
+    lateinit var itemTouchHelper: ItemTouchHelper
 
     companion object {
         //static 代码段可以防止内存泄露

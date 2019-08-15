@@ -38,6 +38,18 @@ public class SuperRecycleAdapter<T extends RecyclerView.ViewHolder> extends Recy
         notifyDataSetChanged();
     }
 
+    /**
+     * 避免刷新闪烁
+     *
+     * @param list
+     */
+    public void updateAvoidFlashing(List list) {
+        baseDatas.clear();
+        baseDatas.addAll(list);
+        notifyItemRangeChanged(0, baseDatas.size());
+
+    }
+
     public int getListSize() {
         return baseDatas.size();
     }

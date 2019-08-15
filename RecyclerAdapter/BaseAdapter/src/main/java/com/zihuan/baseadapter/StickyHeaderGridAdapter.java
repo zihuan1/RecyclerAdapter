@@ -23,9 +23,15 @@ public abstract class StickyHeaderGridAdapter extends SuperRecycleAdapter<Recycl
     public static final int TYPE_ITEM = 1;
 
     private ArrayList<Section> mSections;
+
+
+
     private int[] mSectionIndices;
     private int mTotalItemNumber;
 
+    public int[] getSectionIndices() {
+        return mSectionIndices;
+    }
 
     public StickyHeaderGridAdapter(Object object) {
         instanceofObj(object);
@@ -134,13 +140,10 @@ public abstract class StickyHeaderGridAdapter extends SuperRecycleAdapter<Recycl
 //            default:
 //                throw new InvalidParameterException("Invalid viewType: " + viewType);
         }
-        return new RecyclerViewHolder(view,mListener);
+        return new RecyclerViewHolder(view, mListener);
 
     }
 
-    public abstract int getHeadLayoutResId();
-
-    public abstract int getItemLayoutResId();
 
     @Override
     final public void onBindViewHolder(final RecyclerViewHolder holder, int position) {
@@ -365,90 +368,16 @@ public abstract class StickyHeaderGridAdapter extends SuperRecycleAdapter<Recycl
         return true;
     }
 
-    /**
-     * Called when RecyclerView needs a new {@link RecyclerViewHolder} of the given type to represent
-     * a header.
-     * <p>
-     * This new RecyclerViewHolder should be constructed with a new View that can represent the headers
-     * of the given type. You can either create a new View manually or inflate it from an XML
-     * layout file.
-     * <p>
-     * The new RecyclerViewHolder will be used to display items of the adapter using
-     * {@link #onBindHeaderViewHolder(RecyclerViewHolder, int)}. Since it will be re-used to display
-     * different items in the data set, it is a good idea to cache references to sub views of
-     * the View to avoid unnecessary {@link View#findViewById(int)} calls.
-     *
-     * @param parent     The ViewGroup into which the new View will be added after it is bound to
-     *                   an adapter position.
-     * @param headerType The view type of the new View.
-     * @return AllCityEntity new ViewHolder that holds a View of the given view type.
-     * @see #getSectionHeaderViewType(int)
-     * @see #onBindHeaderViewHolder(RecyclerViewHolder, int)
-     */
 //    public abstract RecyclerViewHolder onCreateHeaderViewHolder(ViewGroup parent, int headerType);
 
-    /**
-     * Called when RecyclerView needs a new {@link RecyclerViewHolder} of the given type to represent
-     * an item.
-     * <p>
-     * This new ViewHolder should be constructed with a new View that can represent the items
-     * of the given type. You can either create a new View manually or inflate it from an XML
-     * layout file.
-     * <p>
-     * The new ViewHolder will be used to display items of the adapter using
-     * {@link #onBindItemViewHolder(RecyclerViewHolder, int, int)}. Since it will be re-used to display
-     * different items in the data set, it is a good idea to cache references to sub views of
-     * the View to avoid unnecessary {@link View#findViewById(int)} calls.
-     *
-     * @param parent   The ViewGroup into which the new View will be added after it is bound to
-     *                 an adapter position.
-     * @param itemType The view type of the new View.
-     * @return AllCityEntity new ViewHolder that holds a View of the given view type.
-     * @see #getSectionItemViewType(int, int)
-     * @see #onBindItemViewHolder(RecyclerViewHolder, int, int)
-     */
 //    public abstract RecyclerViewHolder onCreateItemViewHolder(ViewGroup parent, int itemType);
 
-    /**
-     * Called by RecyclerView to display the data at the specified position. This method should
-     * update the contents of the {@link RecyclerViewHolder#itemView} to reflect the header at the given
-     * position.
-     * <p>
-     * Note that unlike {@link android.widget.ListView}, RecyclerView will not call this method
-     * again if the position of the header changes in the data set unless the header itself is
-     * invalidated or the new position cannot be determined. For this reason, you should only
-     * use the <code>section</code> parameter while acquiring the
-     * related header data inside this method and should not keep a copy of it. If you need the
-     * position of a header later on (e.g. in a click listener), use
-     * {@link RecyclerViewHolder#getAdapterPosition()} which will have the updated adapter
-     * position. Then you can use {@link #getAdapterPositionSection(int)} to get section index.
-     *
-     * @param viewHolder The ViewHolder which should be updated to represent the contents of the
-     *                   header at the given position in the data set.
-     * @param section    The index of the section.
-     */
+    public abstract int getHeadLayoutResId();
+
+    public abstract int getItemLayoutResId();
+
     public abstract void onBindHeaderViewHolder(RecyclerViewHolder viewHolder, int section);
 
-    /**
-     * Called by RecyclerView to display the data at the specified position. This method should
-     * update the contents of the {@link RecyclerViewHolder#itemView} to reflect the item at the given
-     * position.
-     * <p>
-     * Note that unlike {@link android.widget.ListView}, RecyclerView will not call this method
-     * again if the position of the item changes in the data set unless the item itself is
-     * invalidated or the new position cannot be determined. For this reason, you should only
-     * use the <code>offset</code> and <code>section</code> parameters while acquiring the
-     * related data item inside this method and should not keep a copy of it. If you need the
-     * position of an item later on (e.g. in a click listener), use
-     * {@link RecyclerViewHolder#getAdapterPosition()} which will have the updated adapter
-     * position. Then you can use {@link #getAdapterPositionSection(int)} and
-     * {@link #getItemSectionOffset(int, int)}
-     *
-     * @param viewHolder The ViewHolder which should be updated to represent the contents of the
-     *                   item at the given position in the data set.
-     * @param section    The index of the section.
-     * @param offset     The position of the item within the section.
-     */
     public abstract void onBindItemViewHolder(RecyclerViewHolder viewHolder, int section, int offset);
 
     /**

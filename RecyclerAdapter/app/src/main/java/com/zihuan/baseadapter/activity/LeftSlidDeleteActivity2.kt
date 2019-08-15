@@ -4,9 +4,10 @@ import android.app.Activity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import com.zihuan.autoscrollview.ZHAutoScrollViewHelper
 import com.zihuan.baseadapter.Demo2Adapter
+import com.zihuan.baseadapter.R
 import com.zihuan.baseadapter.ViewOnItemClick
-import com.zihuan.baseadapter.ZHLeftScrollViewHelper
 import kotlinx.android.synthetic.main.activity_left_slid_layout.*
 
 
@@ -17,7 +18,7 @@ class LeftSlidDeleteActivity2 : Activity(), ViewOnItemClick {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(com.zihuan.baseadapter.R.layout.activity_left_slid_layout)
+        setContentView(R.layout.activity_left_slid_layout)
         var demoAdapter = Demo2Adapter(this)
         var mDemoData = ArrayList<String>()
         for (i in 0..30) {
@@ -26,7 +27,7 @@ class LeftSlidDeleteActivity2 : Activity(), ViewOnItemClick {
         rv_left_slid.buildVerticalLayout(demoAdapter)
                 .setPullEnabled(false)
                 .setData(mDemoData)
-        var zhLeftScrollViewHelper = ZHLeftScrollViewHelper.getInstance()
+        var zhLeftScrollViewHelper = ZHAutoScrollViewHelper.getInstance()
         zhLeftScrollViewHelper.bindRecyclerView(rv_left_slid.getRecyclerView())
     }
 }

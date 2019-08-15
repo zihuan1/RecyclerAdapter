@@ -18,6 +18,8 @@ allprojects {
         google()
         jcenter()
         maven { url "http://lib.gcssloop.com:8081/repository/gcssloop-central/" }
+        maven { url 'https://jitpack.io' }
+
     }
 }
 

@@ -30,13 +30,13 @@
         app:round_corner="14dp"
         app:round_corner_top_left="0dp">
 
-        <com.zihuan.baseadapter.ZHLeftScrollView
+        <com.zihuan.autoscrollview.ZHAutoScrollView
             android:id="@+id/scroll_item"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/line1"
-            app:right_width="70"
-            app:zh_margin="85">
+            app:sv_margin="85"
+            app:sv_right_width="70">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -78,7 +78,7 @@
                         android:text="删除" />
                 </LinearLayout>
             </LinearLayout>
-        </com.zihuan.baseadapter.ZHLeftScrollView>
+        </com.zihuan.autoscrollview.ZHAutoScrollView>
     </com.gcssloop.widget.RCRelativeLayout>
 
 </RelativeLayout>

@@ -1,6 +1,7 @@
 package com.zihuan.baseadapter
 
 import android.content.Context
+import com.zihuan.baseadapter.activity.HeadRecyclerActivity
 import java.util.*
 
 class RecycleMultipleAdapter(context: Context) : StickyHeaderGridAdapter(context) {
@@ -34,16 +35,6 @@ class RecycleMultipleAdapter(context: Context) : StickyHeaderGridAdapter(context
         return mItemList[section].size
     }
 
-//    override fun onCreateHeaderViewHolder(parent: ViewGroup, headerType: Int): RecyclerViewHolder {
-//        val view = LayoutInflater.from(parent.context).inflate(R.layout.head_layout, parent, false)
-//        return RecyclerViewHolder(view)
-//    }
-//
-//    override fun onCreateItemViewHolder(parent: ViewGroup, itemType: Int): RecyclerViewHolder {
-//        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_layout, parent, false)
-//        return RecyclerViewHolder(view)
-//    }
-
 
     override fun onBindHeaderViewHolder(viewHolder: RecyclerViewHolder, section: Int) {
         viewHolder.getTextView(R.id.tv_name).text = mHeadList[section]
@@ -54,6 +45,10 @@ class RecycleMultipleAdapter(context: Context) : StickyHeaderGridAdapter(context
         val entity = mItemList[section][position]
         viewHolder.getImageView(R.id.iv_head).setImageResource(R.mipmap.ic_launcher)
         viewHolder.getTextView(R.id.tv_name).text = "你好"
+        viewHolder.getView(R.id.rl_main).setOnLongClickListener {
+            (mContext as HeadRecyclerActivity).itemTouchHelper.startDrag(viewHolder)
+            return@setOnLongClickListener false
+        }
     }
 
 }
