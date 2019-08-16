@@ -29,15 +29,9 @@ class HeadRecyclerActivity : AppCompatActivity(), ViewOnHeadClick {
         for (i in 0..30) {
             mDemoData.add("head$i")
             var list = ArrayList<Entity>()
-            list.add(Entity())
-            list.add(Entity())
-            list.add(Entity())
-            list.add(Entity())
-            list.add(Entity())
-            list.add(Entity())
-            list.add(Entity())
-            list.add(Entity())
-            list.add(Entity())
+            for (j in 0..9) {
+                list.add(Entity("item $j"))
+            }
             Item.add(list)
         }
         var adapter = RecycleMultipleAdapter(this)
@@ -58,7 +52,7 @@ class HeadRecyclerActivity : AppCompatActivity(), ViewOnHeadClick {
 
         adapter.upDate(mDemoData, Item)
 
-        itemTouchHelper = ItemTouchHelper(DragItemTouchHelper(adapter, Item as List<ArrayList<Any>>))
+        itemTouchHelper = ItemTouchHelper(DragItemTouchHelper(adapter, Item as List<ArrayList<Entity>>))
         itemTouchHelper.attachToRecyclerView(rav_layout.getRecyclerView())
 
     }

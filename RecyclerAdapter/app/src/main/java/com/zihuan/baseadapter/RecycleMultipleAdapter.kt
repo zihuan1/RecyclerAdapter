@@ -14,8 +14,8 @@ class RecycleMultipleAdapter(context: Context) : StickyHeaderGridAdapter(context
     }
 
 
-    private val mItemList = ArrayList<List<Entity>>()
     private val mHeadList = ArrayList<String>()
+    private val mItemList = ArrayList<List<Entity>>()
 
 
     fun upDate(head: List<String>, list: List<List<Entity>>) {
@@ -24,6 +24,13 @@ class RecycleMultipleAdapter(context: Context) : StickyHeaderGridAdapter(context
         mItemList.addAll(list)
         mHeadList.addAll(head)
         notifyAllSectionsDataSetChanged()
+    }
+
+    fun upDateMove(list: List<List<Entity>>, fromPosition: Int, toPosition: Int) {
+        mItemList.clear()
+        mItemList.addAll(list)
+        calculateSections()
+        notifyItemMoved(fromPosition, toPosition)
     }
 
 
@@ -44,7 +51,7 @@ class RecycleMultipleAdapter(context: Context) : StickyHeaderGridAdapter(context
     override fun onBindItemViewHolder(viewHolder: RecyclerViewHolder, section: Int, position: Int) {
         val entity = mItemList[section][position]
         viewHolder.getImageView(R.id.iv_head).setImageResource(R.mipmap.ic_launcher)
-        viewHolder.getTextView(R.id.tv_name).text = "你好"
+        viewHolder.getTextView(R.id.tv_name).text = entity.mTitle
         viewHolder.getView(R.id.rl_main).setOnLongClickListener {
             (mContext as HeadRecyclerActivity).itemTouchHelper.startDrag(viewHolder)
             return@setOnLongClickListener false

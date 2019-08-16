@@ -25,7 +25,6 @@ public abstract class StickyHeaderGridAdapter extends SuperRecycleAdapter<Recycl
     private ArrayList<Section> mSections;
 
 
-
     private int[] mSectionIndices;
     private int mTotalItemNumber;
 
@@ -69,9 +68,8 @@ public abstract class StickyHeaderGridAdapter extends SuperRecycleAdapter<Recycl
         private int length;
     }
 
-    private void calculateSections() {
+    public void calculateSections() {
         mSections = new ArrayList<>();
-
         int total = 0;
         for (int s = 0, ns = getSectionCount(); s < ns; s++) {
             final Section section = new Section();
@@ -83,7 +81,6 @@ public abstract class StickyHeaderGridAdapter extends SuperRecycleAdapter<Recycl
             total += section.length;
         }
         mTotalItemNumber = total;
-
         total = 0;
         mSectionIndices = new int[mTotalItemNumber];
         for (int s = 0, ns = getSectionCount(); s < ns; s++) {
