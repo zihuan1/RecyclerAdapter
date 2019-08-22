@@ -2,6 +2,7 @@ package com.zihuan.baseadapter.activity
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.helper.ItemTouchHelper
 import android.view.View
 import android.widget.Toast
@@ -10,6 +11,7 @@ import com.scwang.smartrefresh.layout.SmartRefreshLayout
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter
 import com.zihuan.baseadapter.*
 import kotlinx.android.synthetic.main.activity_headrecycle.*
+import kotlinx.android.synthetic.main.recycle_layout.*
 
 
 class HeadRecyclerActivity : AppCompatActivity(), ViewOnHeadClick {
@@ -35,8 +37,8 @@ class HeadRecyclerActivity : AppCompatActivity(), ViewOnHeadClick {
             Item.add(list)
         }
         var adapter = RecycleMultipleAdapter(this)
-        rav_layout.buildVerticalLayout(adapter)
-//        rav_layout.buildGridLayout(adapter, 2)
+//        rav_layout.buildVerticalLayout(adapter)
+        rav_layout.buildGridLayout(adapter, 8)
                 .setLoadEnabled(false)
                 .setPullEnabled(false)
 //                .setOnRefreshLoadMoreListener(object : OnRefreshLoadMoreListener {
@@ -52,12 +54,12 @@ class HeadRecyclerActivity : AppCompatActivity(), ViewOnHeadClick {
 
         adapter.upDate(mDemoData, Item)
 
-        itemTouchHelper = ItemTouchHelper(DragItemTouchHelper(adapter, Item as List<ArrayList<Entity>>))
-        itemTouchHelper.attachToRecyclerView(rav_layout.getRecyclerView())
+//        itemTouchHelper = ItemTouchHelper(DragItemTouchHelper(adapter, Item as List<ArrayList<Entity>>))
+//        itemTouchHelper.attachToRecyclerView(rav_layout.getRecyclerView())
 
     }
 
-    lateinit var itemTouchHelper: ItemTouchHelper
+//    lateinit var itemTouchHelper: ItemTouchHelper
 
     companion object {
         //static 代码段可以防止内存泄露

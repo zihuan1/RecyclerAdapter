@@ -38,4 +38,6 @@ class LeftSlidDeleteActivity : Activity(), ViewOnItemClick {
         var extension = WItemTouchHelperPlus(callback)
         extension.attachToRecyclerView(rv_left_slid.getRecyclerView())
     }
+
+
 }

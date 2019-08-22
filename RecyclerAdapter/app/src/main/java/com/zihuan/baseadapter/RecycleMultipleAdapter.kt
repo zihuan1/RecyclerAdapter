@@ -52,10 +52,11 @@ class RecycleMultipleAdapter(context: Context) : StickyHeaderGridAdapter(context
         val entity = mItemList[section][position]
         viewHolder.getImageView(R.id.iv_head).setImageResource(R.mipmap.ic_launcher)
         viewHolder.getTextView(R.id.tv_name).text = entity.mTitle
-        viewHolder.getView(R.id.rl_main).setOnLongClickListener {
-            (mContext as HeadRecyclerActivity).itemTouchHelper.startDrag(viewHolder)
-            return@setOnLongClickListener false
-        }
+//        viewHolder.getView(R.id.rl_main).setOnLongClickListener {
+//            if (mContext is HeadRecyclerActivity)
+//                (mContext as HeadRecyclerActivity).itemTouchHelper.startDrag(viewHolder)
+//            return@setOnLongClickListener false
+//        }
     }
 
 }

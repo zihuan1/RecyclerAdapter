@@ -185,16 +185,13 @@ public class RecycleViewDivider extends RecyclerView.ItemDecoration {
     private boolean isLastColumn(RecyclerView parent, int pos, int spanCount, int childCount) {
         RecyclerView.LayoutManager layoutManager = parent.getLayoutManager();
         if (layoutManager instanceof GridLayoutManager) {
-            if ((pos + 1) % spanCount == 0)// 如果是最后一列，则不需要绘制右边
-            {
+            if ((pos + 1) % spanCount == 0) {// 如果是最后一列，则不需要绘制右边
                 return true;
             }
         } else if (layoutManager instanceof StaggeredGridLayoutManager) {
-            int orientation = ((StaggeredGridLayoutManager) layoutManager)
-                    .getOrientation();
+            int orientation = ((StaggeredGridLayoutManager) layoutManager).getOrientation();
             if (orientation == StaggeredGridLayoutManager.VERTICAL) {
-                if ((pos + 1) % spanCount == 0)// 如果是最后一列，则不需要绘制右边
-                {
+                if ((pos + 1) % spanCount == 0) {// 如果是最后一列，则不需要绘制右边
                     return true;
                 }
             } else {
@@ -206,8 +203,7 @@ public class RecycleViewDivider extends RecyclerView.ItemDecoration {
         return false;
     }
 
-    private boolean isLastRaw(RecyclerView parent, int pos, int spanCount,
-                              int childCount) {
+    private boolean isLastRaw(RecyclerView parent, int pos, int spanCount, int childCount) {
         RecyclerView.LayoutManager layoutManager = parent.getLayoutManager();
         if (layoutManager instanceof GridLayoutManager) {
             // 如果是最后一行，则不需要绘制底部

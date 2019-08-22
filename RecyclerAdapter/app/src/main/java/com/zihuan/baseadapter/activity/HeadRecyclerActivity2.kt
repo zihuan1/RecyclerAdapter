@@ -30,11 +30,15 @@ class HeadRecyclerActivity2 : AppCompatActivity() {
             list.add(Entity())
             list.add(Entity())
             list.add(Entity())
+            list.add(Entity())
+            list.add(Entity())
+            list.add(Entity())
+            list.add(Entity())
             Item.add(list)
         }
         var adapter = RecycleMultipleAdapter(this)
-        var layoutManager = StickyHeaderGridLayoutManager(2)
-        rav_layout.buildGridLayout(adapter, 2)
+        var layoutManager = StickyHeaderGridLayoutManager(8)
+        rav_layout.buildGridLayout(adapter, 8)
                 .setLayoutManager(layoutManager)
         adapter.upDate(mDemoData, Item)
         rav_layout.getRecyclerView().isNestedScrollingEnabled=true

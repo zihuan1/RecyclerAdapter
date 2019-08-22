@@ -85,17 +85,17 @@ class RecycleAssViewLayout : FrameLayout {
                     re_view.initGrid(type, rAdapter)
             }
             //如果是多带head的grid
-//            if (adapter is StickyHeaderGridAdapter && re_view.layoutManager !is StickyHeaderGridLayoutManager) {
-//                var layoutManager = re_view.layoutManager as GridLayoutManager
-//                layoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
-//                    override fun getSpanSize(position: Int): Int {
-//                        return when (adapter.getItemViewType(position)) {
-//                            0 -> type
-//                            else -> 1
-//                        }
-//                    }
-//                }
-//            }
+            if (adapter is StickyHeaderGridAdapter && re_view.layoutManager !is StickyHeaderGridLayoutManager) {
+                var layoutManager = re_view.layoutManager as GridLayoutManager
+                layoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+                    override fun getSpanSize(position: Int): Int {
+                        return when (adapter.getItemViewType(position)) {
+                            0 -> type
+                            else -> 1
+                        }
+                    }
+                }
+            }
             return this
         }
 

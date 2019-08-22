@@ -40,6 +40,10 @@ public abstract class RecyclerAdapter extends SuperRecycleAdapter<RecyclerViewHo
 
     }
 
+    public void setOnItemClick(Object object) {
+        mListener = object;
+
+    }
 
     //创建新View，被LayoutManager所调用
     @Override
