@@ -373,9 +373,9 @@ public abstract class StickyHeaderGridAdapter extends SuperRecycleAdapter<Recycl
 
     public abstract int getItemLayoutResId();
 
-    public abstract void onBindHeaderViewHolder(RecyclerViewHolder viewHolder, int section);
+    public abstract void onBindHeaderViewHolder(RecyclerViewHolder holder, int section);
 
-    public abstract void onBindItemViewHolder(RecyclerViewHolder viewHolder, int section, int offset);
+    public abstract void onBindItemViewHolder(RecyclerViewHolder holder, int section, int offset);
 
     /**
      * Notify any registered observers that the data set has changed.
