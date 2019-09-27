@@ -7,6 +7,14 @@
 
 
     <TextView
+        android:id="@+id/tv_add"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:text="添加" />
+
+    <TextView
         android:id="@+id/tv_del"
         android:layout_width="70dp"
         android:layout_height="70dp"
@@ -17,8 +25,9 @@
 
     <TextView
         android:id="@+id/item_text"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="70dp"
+        android:layout_centerHorizontal="true"
         android:background="#ffffff"
         android:gravity="center"
         android:tag="slide_flag"

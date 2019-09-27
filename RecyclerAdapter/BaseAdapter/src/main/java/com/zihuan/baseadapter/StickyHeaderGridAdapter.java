@@ -153,17 +153,18 @@ public abstract class StickyHeaderGridAdapter extends SuperRecycleAdapter<Recycl
         final int externalType = externalViewType(holder.getItemViewType());
         final int offset = getItemSectionOffset(section, position);
 
-        if (onHeadClick != null)
-            holder.view.setOnClickListener(new View.OnClickListener() {
+        if (onHeadClick != null) {
+            holder.getView().setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (internalType == TYPE_HEADER)
-                        onHeadClick.setOnHeadClick(holder.view, section);
-                    else {
-                        onHeadClick.setOnItemClick(holder.view, section, offset);
+                    if (internalType == TYPE_HEADER) {
+                        onHeadClick.setOnHeadClick(holder.getView(), section);
+                    } else {
+                        onHeadClick.setOnItemClick(holder.getView(), section, offset);
                     }
                 }
             });
+        }
 
         switch (internalType) {
             case TYPE_HEADER:

@@ -6,13 +6,14 @@ import android.os.Bundle
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.Logger
 import com.orhanobut.logger.PrettyFormatStrategy
+import com.zihuan.baseadapter.R
 import kotlinx.android.synthetic.main.activity_home.*
 
 
 class MainActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(com.zihuan.baseadapter.R.layout.activity_home)
+        setContentView(R.layout.activity_home)
         bt_list.setOnClickListener {
             startActivity(Intent(this, RefreshLoadMoreActivity::class.java))
         }
@@ -27,6 +28,9 @@ class MainActivity : Activity() {
         }
         bt_left_del_2.setOnClickListener {
             startActivity(Intent(this, LeftSlidDeleteActivity2::class.java))
+        }
+        bt_child_click.setOnClickListener {
+            startActivity(Intent(this, ChildClickActivity::class.java))
         }
         val formatStrategy = PrettyFormatStrategy.newBuilder()
                 .showThreadInfo(false)  // (Optional) Whether to show thread info or not. Default true

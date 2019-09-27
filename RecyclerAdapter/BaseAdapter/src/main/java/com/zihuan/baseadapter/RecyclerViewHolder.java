@@ -1,9 +1,6 @@
 package com.zihuan.baseadapter;
 
-import android.app.Activity;
-import android.content.Context;
 import android.databinding.ViewDataBinding;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
@@ -11,33 +8,34 @@ import android.widget.TextView;
 
 
 /**
- * Created by zihuan on 2016/9/1.
+ * @author Created by zihuan on 2016/9/1.
  */
 public class RecyclerViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
 
-    View view;
-    ViewOnItemClick onItemClick;
-    ViewOnItemLongClick longClick;
-    ViewDataBinding dataBinding;
+    private View view;
+    private ViewOnItemClick onItemClick;
+    private ViewOnItemLongClick longClick;
+    public ViewDataBinding dataBinding;
+    private ViewOnItemChildClick itemChildClick;
 
-    public RecyclerViewHolder(View view,Object object) {
+    public RecyclerViewHolder(View view, Object object) {
         super(view);
-        instanceofObj(view,object);
+        instanceofObj(view, object);
     }
 
-    public RecyclerViewHolder(View view, ViewDataBinding binding,Object object) {
+    public RecyclerViewHolder(View view, ViewDataBinding binding, Object object) {
         super(view);
         dataBinding = binding;
-        instanceofObj(view,object);
+        instanceofObj(view, object);
     }
 
-    public RecyclerViewHolder(View view, int type,Object object) {
+    public RecyclerViewHolder(View view, int type, Object object) {
         super(view);
         holderType = type;
-        instanceofObj(view,object);
+        instanceofObj(view, object);
     }
 
-    private void instanceofObj(View view,Object object) {
+    private void instanceofObj(View view, Object object) {
         this.view = view;
         if (object instanceof ViewOnItemClick) {
             this.onItemClick = (ViewOnItemClick) object;
@@ -48,6 +46,24 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder implements View.
             view.setOnLongClickListener(this);
         }
     }
+
+    /***
+     *
+     * @param viewid 需要绑定单独点击事件的viewid
+     */
+    public void setOnChildClick(ViewOnItemChildClick childClick, int... viewid) {
+        itemChildClick = childClick;
+        for (int i = 0, size = viewid.length; i < size; i++) {
+            final View view = getView(viewid[i]);
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    itemChildClick.setOnChildClick(view.getId(), getAdapterPosition());
+                }
+            });
+        }
+    }
+
 
     @Override
     public void onClick(View v) {

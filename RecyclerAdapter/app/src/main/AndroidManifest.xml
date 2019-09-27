@@ -21,6 +21,7 @@
         <activity android:name=".activity.RefreshLoadMoreActivity" />
         <activity android:name=".activity.LeftSlidDeleteActivity" />
         <activity android:name=".activity.LeftSlidDeleteActivity2" />
+        <activity android:name=".activity.ChildClickActivity" />
 
     </application>
 

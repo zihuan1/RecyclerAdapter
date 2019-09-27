@@ -7,6 +7,9 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author zihuan
+ */
 public class SuperRecycleAdapter<T extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<T> {
 
     public List baseDatas = new ArrayList();
@@ -21,7 +24,11 @@ public class SuperRecycleAdapter<T extends RecyclerView.ViewHolder> extends Recy
 
     }
 
-    //获取数据的数量
+    /**
+     * 获取数据的数量
+     *
+     * @return
+     */
     @Override
     public int getItemCount() {
         return baseDatas == null || baseDatas.size() == 0 ? 0 : baseDatas.size();
