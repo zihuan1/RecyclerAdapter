@@ -11,13 +11,10 @@ import java.util.List;
 
 
 /**
- * Created by zihuan
+ * @author zihuan
  */
 public abstract class SpecialHolderAdapter<T extends RecyclerViewHolder> extends SuperRecycleAdapter<T> {
-//    ViewOnItemClick onItemClick;
-//    ViewOnItemLongClick longClick;
     public Context mContext;
-    private Object mListener;
 
     public SpecialHolderAdapter(Object object) {
         instanceofObj(object);
@@ -31,16 +28,8 @@ public abstract class SpecialHolderAdapter<T extends RecyclerViewHolder> extends
         } else if (object instanceof View) {
             mContext = ((View) object).getContext();
         }
-//        if (object instanceof ViewOnItemClick) {
-//            this.onItemClick = (ViewOnItemClick) object;
-//        }
-//        if (object instanceof ViewOnItemLongClick) {
-//            this.longClick = (ViewOnItemLongClick) object;
-//        }
     }
 
-    //    T mType;
-    //创建新View，被LayoutManager所调用
     @Override
     public T onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         int res = getLayoutResId();
@@ -49,7 +38,6 @@ public abstract class SpecialHolderAdapter<T extends RecyclerViewHolder> extends
     }
 
 
-    //将数据与界面进行绑定的操作
     @Override
     public void onBindViewHolder(T viewHolder, int position) {
         convert(viewHolder, position, mContext);

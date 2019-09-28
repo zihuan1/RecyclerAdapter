@@ -2,12 +2,14 @@ package com.zihuan.baseadapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.databinding.BindingAdapter;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 
 /**
@@ -19,12 +21,11 @@ public class RecyclerBindAdapter extends SuperRecycleAdapter<RecyclerViewHolder>
     ViewOnItemLongClick longClick;
     public Context mContext;
     public int mRes;
+    private Object mListener;
 
     public RecyclerBindAdapter(Object object, int layoutRes) {
         instanceofObj(object, layoutRes);
     }
-
-    private Object mListener;
 
     public RecyclerBindAdapter(Object object, int layoutRes, boolean disableClick) {
         instanceofObj(object, layoutRes);
@@ -50,10 +51,10 @@ public class RecyclerBindAdapter extends SuperRecycleAdapter<RecyclerViewHolder>
         if (object instanceof ViewOnItemLongClick) {
             this.longClick = (ViewOnItemLongClick) object;
         }
+        mBindImageLoading = AdapterConfig.getInstance().getBindImageLoading();
     }
 
 
-    //创建新View，被LayoutManager所调用
     @Override
     public RecyclerViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(mRes, viewGroup, false);
@@ -62,11 +63,24 @@ public class RecyclerBindAdapter extends SuperRecycleAdapter<RecyclerViewHolder>
         return holder;
     }
 
-    //将数据与界面进行绑定的操作
     @Override
     public void onBindViewHolder(RecyclerViewHolder viewHolder, int position) {
         viewHolder.dataBinding.setVariable(BR.item, baseDatas.get(position));
     }
 
+
+    private static RecyclerBindImageLoading mBindImageLoading;
+
+    /***
+     *替换默认配置的图片加载
+     */
+    public void setImageLoader(RecyclerBindImageLoading imageLoader) {
+        mBindImageLoading = imageLoader;
+    }
+
+    @BindingAdapter({"android:src"})
+    public static void setImageResource(ImageView imageView, String resource) {
+        mBindImageLoading.loadImage(imageView, resource);
+    }
 
 }
