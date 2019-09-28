@@ -1,5 +1,7 @@
 package com.zihuan.baseadapter;
 
+import android.content.Context;
+import android.support.annotation.DrawableRes;
 import android.widget.ImageView;
 
 /**
@@ -10,5 +12,8 @@ import android.widget.ImageView;
  * @date 2019/9/28 10:53
  */
 public interface RecyclerBindImageLoading {
-    void loadImage(ImageView view, String url);
+    void displayImage(Context context,ImageView view, String url);
+
+    void displayImage(Context context,ImageView imageView, @DrawableRes Integer resId);
+
 }

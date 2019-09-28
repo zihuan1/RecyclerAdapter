@@ -1,7 +1,6 @@
 package com.zihuan.baseadapter
 
 import android.content.Context
-import com.zihuan.baseadapter.activity.HeadRecyclerActivity
 import java.util.*
 
 class RecycleMultipleAdapter(context: Context) : StickyHeaderGridAdapter(context) {
@@ -51,7 +50,7 @@ class RecycleMultipleAdapter(context: Context) : StickyHeaderGridAdapter(context
     override fun onBindItemViewHolder(viewHolder: RecyclerViewHolder, section: Int, position: Int) {
         val entity = mItemList[section][position]
         viewHolder.getImageView(R.id.iv_head).setImageResource(R.mipmap.ic_launcher)
-        viewHolder.getTextView(R.id.tv_name).text = entity.mTitle
+        viewHolder.getTextView(R.id.tv_name).text = entity.title
 //        viewHolder.getView(R.id.rl_main).setOnLongClickListener {
 //            if (mContext is HeadRecyclerActivity)
 //                (mContext as HeadRecyclerActivity).itemTouchHelper.startDrag(viewHolder)

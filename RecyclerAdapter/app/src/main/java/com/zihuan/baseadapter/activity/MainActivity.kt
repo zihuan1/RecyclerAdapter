@@ -6,7 +6,9 @@ import android.os.Bundle
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.Logger
 import com.orhanobut.logger.PrettyFormatStrategy
+import com.zihuan.baseadapter.RecyclerAdapterConfig
 import com.zihuan.baseadapter.R
+import com.zihuan.baseadapter.RecyclerImageImp
 import kotlinx.android.synthetic.main.activity_home.*
 
 
@@ -32,6 +34,9 @@ class MainActivity : Activity() {
         bt_child_click.setOnClickListener {
             startActivity(Intent(this, ChildClickActivity::class.java))
         }
+        bt_data_bind.setOnClickListener {
+            startActivity(Intent(this, DataBindActivity::class.java))
+        }
         val formatStrategy = PrettyFormatStrategy.newBuilder()
                 .showThreadInfo(false)  // (Optional) Whether to show thread info or not. Default true
                 .methodCount(0)         // (Optional) How many method line to show. Default 2
@@ -40,5 +45,6 @@ class MainActivity : Activity() {
                 .build()
 
         Logger.addLogAdapter(AndroidLogAdapter(formatStrategy))
+        RecyclerAdapterConfig.getInstance().bindImageLoading = RecyclerImageImp()
     }
 }

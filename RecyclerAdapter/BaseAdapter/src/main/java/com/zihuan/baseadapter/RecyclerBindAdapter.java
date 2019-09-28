@@ -19,9 +19,10 @@ import android.widget.ImageView;
 public class RecyclerBindAdapter extends SuperRecycleAdapter<RecyclerViewHolder> {
     ViewOnItemClick onItemClick;
     ViewOnItemLongClick longClick;
-    public Context mContext;
+    public static Context mContext;
     public int mRes;
     private Object mListener;
+    private static RecyclerBindImageLoading mBindImageLoading;
 
     public RecyclerBindAdapter(Object object, int layoutRes) {
         instanceofObj(object, layoutRes);
@@ -51,7 +52,7 @@ public class RecyclerBindAdapter extends SuperRecycleAdapter<RecyclerViewHolder>
         if (object instanceof ViewOnItemLongClick) {
             this.longClick = (ViewOnItemLongClick) object;
         }
-        mBindImageLoading = AdapterConfig.getInstance().getBindImageLoading();
+        mBindImageLoading = RecyclerAdapterConfig.getInstance().getBindImageLoading();
     }
 
 
@@ -69,8 +70,6 @@ public class RecyclerBindAdapter extends SuperRecycleAdapter<RecyclerViewHolder>
     }
 
 
-    private static RecyclerBindImageLoading mBindImageLoading;
-
     /***
      *替换默认配置的图片加载
      */
@@ -80,7 +79,11 @@ public class RecyclerBindAdapter extends SuperRecycleAdapter<RecyclerViewHolder>
 
     @BindingAdapter({"android:src"})
     public static void setImageResource(ImageView imageView, String resource) {
-        mBindImageLoading.loadImage(imageView, resource);
+        if (RecyclerAdapterConfig.getInstance().isInt(resource)) {
+            mBindImageLoading.displayImage(mContext,imageView, Integer.valueOf(resource));
+        } else {
+            mBindImageLoading.displayImage(mContext,imageView, resource);
+        }
     }
 
 }

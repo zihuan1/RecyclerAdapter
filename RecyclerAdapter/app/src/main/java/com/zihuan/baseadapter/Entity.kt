@@ -5,10 +5,11 @@ class Entity {
 
     constructor()
     constructor(mTitle: String) {
-        this.mTitle = mTitle
+        this.title = mTitle
     }
 
-    var mTitle = ""
+    var title = ""
     var res = 0
+    var url = ""
 
 }
