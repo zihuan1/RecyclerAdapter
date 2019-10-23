@@ -6,6 +6,7 @@ import android.databinding.BindingAdapter;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -78,10 +79,13 @@ public class RecyclerBindAdapter extends SuperRecycleAdapter<RecyclerViewHolder>
 
     @BindingAdapter({"android:src"})
     public static void setImageResource(ImageView imageView, String resource) {
+        if (TextUtils.isEmpty(resource)) {
+            return;
+        }
         if (RecyclerAdapterConfig.getInstance().isInt(resource)) {
-            mBindImageLoading.displayImage(mContext,imageView, Integer.valueOf(resource));
+            mBindImageLoading.displayImage(mContext, imageView, Integer.valueOf(resource));
         } else {
-            mBindImageLoading.displayImage(mContext,imageView, resource);
+            mBindImageLoading.displayImage(mContext, imageView, resource);
         }
     }
 

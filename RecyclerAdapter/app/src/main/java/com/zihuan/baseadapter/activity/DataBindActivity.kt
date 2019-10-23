@@ -19,7 +19,8 @@ class DataBindActivity : AppCompatActivity() {
             var entity = Entity()
             entity.title = "昵称$i"
             if (i % 2 == 0)
-                entity.url = "https://pic4.zhimg.com/80/v2-a5ae7ffda2ff33d399ac1ac8a72582aa_hd.jpg"
+                entity.url = ""
+//                entity.url = "https://pic4.zhimg.com/80/v2-a5ae7ffda2ff33d399ac1ac8a72582aa_hd.jpg"
             else entity.url = R.mipmap.ic_launcher.toString()
             mDemoData.add(entity)
         }

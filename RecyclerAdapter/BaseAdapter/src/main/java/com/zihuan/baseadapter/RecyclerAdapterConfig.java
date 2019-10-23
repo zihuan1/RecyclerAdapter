@@ -6,8 +6,6 @@ import android.widget.ImageView;
 import java.util.regex.Pattern;
 
 /**
- * Demo class
- *
  * @author zihuan
  * @Description
  * @date 2019/9/28 10:55
