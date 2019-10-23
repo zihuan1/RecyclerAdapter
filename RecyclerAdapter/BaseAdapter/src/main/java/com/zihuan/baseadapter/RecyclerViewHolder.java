@@ -47,8 +47,27 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder implements View.
         }
     }
 
-    /***
+    /**
+     * 解绑当前适配器的点击事件
      *
+     * @param unClick
+     */
+    public void unViewOnItemClick(boolean unClick) {
+        if (!unClick) {
+            view.setOnClickListener(null);
+        }
+    }
+
+    /**
+     * 解绑当前适配器的长按点击事件
+     */
+    public void unViewOnLongItemClick(boolean unClick) {
+        if (!unClick) {
+            view.setOnLongClickListener(null);
+        }
+    }
+
+    /**
      * @param viewid 需要绑定单独点击事件的viewid
      */
     public void setOnChildClick(ViewOnItemChildClick childClick, int... viewid) {

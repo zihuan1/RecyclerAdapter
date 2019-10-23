@@ -24,6 +24,11 @@ public abstract class RecyclerAdapter extends SuperRecycleAdapter<RecyclerViewHo
      * */
     int[] mViewId;
     private Object mObject;
+    private boolean mUnClick;
+    private boolean mUnLongClick;
+    private boolean mUnChildClick;
+
+    // TODO: 改成配置模式 getInstance ... 再加几个构造方法用来设置是否需要添加点击事件 并且子点击事件需要把view传回
 
     public RecyclerAdapter(Object object) {
         instanceofObj(object);
@@ -45,7 +50,27 @@ public abstract class RecyclerAdapter extends SuperRecycleAdapter<RecyclerViewHo
         } else if (object instanceof View) {
             mContext = ((View) object).getContext();
         }
+    }
 
+    /**
+     * 解绑当前适配器的点击事件
+     */
+    public void unViewOnItemClick() {
+        mUnClick = true;
+    }
+
+    /**
+     * 解绑当前适配器的长按点击事件
+     */
+    public void unViewOnLongItemClick() {
+        mUnLongClick = true;
+    }
+
+    /**
+     * 解绑当前适配器的子点击事件
+     */
+    public void unOnChildClick() {
+        mUnChildClick = true;
     }
 
     /***
@@ -61,14 +86,14 @@ public abstract class RecyclerAdapter extends SuperRecycleAdapter<RecyclerViewHo
      * 当一个页面中的item中的某个view需要单独添加点击事件的时候用这个方法
      * @param viewid
      */
-    public void setOnChildCilck(int... viewid) {
+    public void setOnChildClick(int... viewid) {
         if (mContext instanceof ViewOnItemChildClick) {
             itemChildClick = (ViewOnItemChildClick) mContext;
             mViewId = viewid;
         }
     }
 
-    public void setOnChildCilck(ViewOnItemChildClick childClick, int... viewid) {
+    public void setOnChildClick(ViewOnItemChildClick childClick, int... viewid) {
         itemChildClick = childClick;
         mViewId = viewid;
     }
@@ -80,7 +105,11 @@ public abstract class RecyclerAdapter extends SuperRecycleAdapter<RecyclerViewHo
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(res, viewGroup, false);
         RecyclerViewHolder holder = new RecyclerViewHolder(view, mObject);
         if (null != itemChildClick) {
-            holder.setOnChildClick(itemChildClick, mViewId);
+            holder.unViewOnItemClick(mUnClick);
+            holder.unViewOnLongItemClick(mUnLongClick);
+            if (!mUnChildClick) {
+                holder.setOnChildClick(itemChildClick, mViewId);
+            }
         }
         return holder;
     }

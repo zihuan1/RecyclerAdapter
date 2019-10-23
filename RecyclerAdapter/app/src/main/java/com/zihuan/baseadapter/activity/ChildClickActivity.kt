@@ -26,7 +26,7 @@ class ChildClickActivity : AppCompatActivity(), ViewOnItemClick, ViewOnItemChild
         for (i in 0..30) {
             mDemoData.add("昵称$i")
         }
-        demoAdapter.setOnChildCilck(R.id.tv_add, R.id.tv_del)
+        demoAdapter.setOnChildClick(R.id.tv_add, R.id.tv_del)
         rav_layout.buildVerticalLayout(demoAdapter)
                 .setData(mDemoData)
     }

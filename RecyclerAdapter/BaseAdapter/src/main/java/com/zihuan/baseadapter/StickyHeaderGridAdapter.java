@@ -15,7 +15,6 @@ import java.util.List;
 import static android.support.v7.widget.RecyclerView.NO_POSITION;
 
 
-@SuppressWarnings({"unused", "WeakerAccess"})
 public abstract class StickyHeaderGridAdapter extends SuperRecycleAdapter<RecyclerViewHolder> {
     public static final String TAG = "StickyHeaderGridAdapter";
 
