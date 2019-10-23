@@ -14,7 +14,6 @@ import android.widget.ImageView;
 
 /**
  * Created by zihuan
- * 建议纯文字使用
  */
 public class RecyclerBindAdapter extends SuperRecycleAdapter<RecyclerViewHolder> {
     ViewOnItemClick onItemClick;
