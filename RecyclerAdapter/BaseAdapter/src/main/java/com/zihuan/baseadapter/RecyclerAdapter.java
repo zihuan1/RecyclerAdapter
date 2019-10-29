@@ -28,6 +28,7 @@ public abstract class RecyclerAdapter extends SuperRecycleAdapter<RecyclerViewHo
     private boolean mUnLongClick;
     private boolean mUnChildClick;
 
+    // TODO: 改成配置模式 getInstance ... 再加几个构造方法用来设置是否需要添加点击事件 并且子点击事件需要把view传回
 
     public RecyclerAdapter(Object object) {
         instanceofObj(object);
