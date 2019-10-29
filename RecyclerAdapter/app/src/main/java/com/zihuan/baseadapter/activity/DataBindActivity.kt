@@ -2,6 +2,7 @@ package com.zihuan.baseadapter.activity
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.zihuan.baseadapter.*
@@ -24,7 +25,11 @@ class DataBindActivity : AppCompatActivity() {
             else entity.url = R.mipmap.ic_launcher.toString()
             mDemoData.add(entity)
         }
-        rav_layout.buildVerticalLayout(RecyclerBindAdapter(this, R.layout.rv_bind_layout))
+        var adapter=RecyclerBindAdapter(this, R.layout.rv_bind_layout)
+        adapter.setOnItemClick { view, position ->
+            Log.e("点击","点击")
+        }
+        rav_layout.buildVerticalLayout(adapter)
                 .setData(mDemoData)
     }
 

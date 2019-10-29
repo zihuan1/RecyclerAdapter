@@ -21,7 +21,7 @@ public class RecyclerBindAdapter extends SuperRecycleAdapter<RecyclerViewHolder>
     ViewOnItemLongClick longClick;
     public static Context mContext;
     public int mRes;
-    private Object mListener;
+    private Object mObject;
     private static RecyclerBindImageLoading mBindImageLoading;
 
     public RecyclerBindAdapter(Object object, int layoutRes) {
@@ -37,7 +37,7 @@ public class RecyclerBindAdapter extends SuperRecycleAdapter<RecyclerViewHolder>
     }
 
     private void instanceofObj(Object object, int res) {
-        mListener = object;
+        mObject = object;
         mRes = res;
         if (object instanceof Fragment) {
             mContext = ((Fragment) object).getContext();
@@ -55,12 +55,21 @@ public class RecyclerBindAdapter extends SuperRecycleAdapter<RecyclerViewHolder>
         mBindImageLoading = RecyclerAdapterConfig.getInstance().getBindImageLoading();
     }
 
+    /***
+     * 当一个页面中有多个RecyclerView的时候用这个方法设置点击事件
+     * @param object
+     */
+    public void setOnItemClick(ViewOnItemClick object) {
+        if (object != null) {
+            mObject = object;
+        }
+    }
 
     @Override
     public RecyclerViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(mRes, viewGroup, false);
         ViewDataBinding binding = DataBindingUtil.bind(view);
-        RecyclerViewHolder holder = new RecyclerViewHolder(view, binding, mListener);
+        RecyclerViewHolder holder = new RecyclerViewHolder(view, binding, mObject);
         return holder;
     }
 
