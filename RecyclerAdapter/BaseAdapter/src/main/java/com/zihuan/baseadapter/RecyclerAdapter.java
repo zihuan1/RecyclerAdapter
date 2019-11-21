@@ -87,8 +87,8 @@ public abstract class RecyclerAdapter extends SuperRecycleAdapter<RecyclerViewHo
      * @param viewid
      */
     public void setOnChildClick(int... viewid) {
-        if (mContext instanceof ViewOnItemChildClick) {
-            itemChildClick = (ViewOnItemChildClick) mContext;
+        if (mObject instanceof ViewOnItemChildClick) {
+            itemChildClick = (ViewOnItemChildClick) mObject;
             mViewId = viewid;
         }
     }
