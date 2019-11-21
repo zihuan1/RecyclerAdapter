@@ -105,8 +105,8 @@ public abstract class RecyclerAdapter extends SuperRecycleAdapter<RecyclerViewHo
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(res, viewGroup, false);
         RecyclerViewHolder holder = new RecyclerViewHolder(view, mObject);
         if (null != itemChildClick) {
-            holder.unViewOnItemClick(mUnClick);
-            holder.unViewOnLongItemClick(mUnLongClick);
+//            holder.unViewOnItemClick(mUnClick);
+//            holder.unViewOnLongItemClick(mUnLongClick);
             if (!mUnChildClick) {
                 holder.setOnChildClick(itemChildClick, mViewId);
             }
