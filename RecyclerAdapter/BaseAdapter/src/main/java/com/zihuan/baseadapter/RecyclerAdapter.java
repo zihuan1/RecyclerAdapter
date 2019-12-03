@@ -29,6 +29,7 @@ public abstract class RecyclerAdapter extends SuperRecycleAdapter<RecyclerViewHo
     private boolean mUnChildClick;
 
     // TODO: 改成配置模式 getInstance ... 再加几个构造方法用来设置是否需要添加点击事件 并且子点击事件需要把view传回
+    // TODO: 整理一下点击事件
 
     public RecyclerAdapter(Object object) {
         instanceofObj(object);
@@ -86,16 +87,27 @@ public abstract class RecyclerAdapter extends SuperRecycleAdapter<RecyclerViewHo
      * 当一个页面中的item中的某个view需要单独添加点击事件的时候用这个方法
      * @param viewid
      */
-    public void setOnChildClick(int... viewid) {
+    @Deprecated
+    public RecyclerAdapter setOnChildClick(int... viewid) {
         if (mObject instanceof ViewOnItemChildClick) {
             itemChildClick = (ViewOnItemChildClick) mObject;
             mViewId = viewid;
         }
+        return this;
     }
 
     public void setOnChildClick(ViewOnItemChildClick childClick, int... viewid) {
         itemChildClick = childClick;
         mViewId = viewid;
+    }
+
+    public RecyclerAdapter setOnChildClickId(int... viewid) {
+        mViewId = viewid;
+        return this;
+    }
+
+    public void setOnChildClick(ViewOnItemChildClick childClick) {
+        itemChildClick = childClick;
     }
 
 

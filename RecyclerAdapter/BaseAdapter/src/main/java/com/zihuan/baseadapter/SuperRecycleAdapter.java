@@ -39,6 +39,10 @@ public class SuperRecycleAdapter<T extends RecyclerView.ViewHolder> extends Recy
         return (T) (baseDatas.get(index));
     }
 
+    public <T> ArrayList<T> getBaseData() {
+        return (ArrayList<T>) baseDatas;
+    }
+
     public void update(List list) {
         baseDatas.clear();
         baseDatas.addAll(list);
