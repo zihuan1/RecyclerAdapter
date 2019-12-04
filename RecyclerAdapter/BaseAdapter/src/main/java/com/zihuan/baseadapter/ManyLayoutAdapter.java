@@ -15,6 +15,7 @@ import java.util.List;
 
 /***
  * 多布局适配器
+ * @author Zihuan
  */
 public abstract class ManyLayoutAdapter extends RecyclerView.Adapter<RecyclerViewHolder> {
     public List baseDatas = new ArrayList();

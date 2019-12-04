@@ -1,11 +1,10 @@
-package com.zihuan.app.base.recycler
+package com.zihuan.baseadapter
 
 import android.annotation.SuppressLint
 import android.content.Context
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import com.zihuan.baseadapter.*
 
 @SuppressLint("StaticFieldLeak")
 object RecycleLayoutKt {
@@ -14,7 +13,7 @@ object RecycleLayoutKt {
     //横向布局
     fun RecyclerView.initHorizontal() {
         mContext = this.context
-        this.layoutManager = RecycleLayoutKt.RecycleViewBuilder.getLinLayoutManager(LinearLayoutManager.HORIZONTAL, this)
+        this.layoutManager = RecycleViewBuilder.getLinLayoutManager(LinearLayoutManager.HORIZONTAL, this)
     }
 
     fun RecyclerView.initHorizontal(adapter: RecyclerView.Adapter<*>) {
@@ -26,7 +25,7 @@ object RecycleLayoutKt {
     //竖向布局
     fun RecyclerView.initVertical(): LinearLayoutManager {
         mContext = this.context
-        this.layoutManager = RecycleLayoutKt.RecycleViewBuilder.getLinLayoutManager(LinearLayoutManager.VERTICAL, this)
+        this.layoutManager = RecycleViewBuilder.getLinLayoutManager(LinearLayoutManager.VERTICAL, this)
         return this.layoutManager as LinearLayoutManager
     }
 
@@ -38,7 +37,7 @@ object RecycleLayoutKt {
 
     fun RecyclerView.initGrid(count: Int): GridLayoutManager {
         mContext = this.context
-        this.layoutManager = RecycleLayoutKt.RecycleViewBuilder.getGridLayoutManager(count, this)
+        this.layoutManager = RecycleViewBuilder.getGridLayoutManager(count, this)
         return this.layoutManager as GridLayoutManager
     }
 

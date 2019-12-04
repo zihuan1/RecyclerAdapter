@@ -12,9 +12,9 @@ import android.view.View
 import android.widget.FrameLayout
 import com.scwang.smartrefresh.layout.SmartRefreshLayout
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener
-import com.zihuan.app.base.recycler.RecycleLayoutKt.initGrid
-import com.zihuan.app.base.recycler.RecycleLayoutKt.initHorizontal
-import com.zihuan.app.base.recycler.RecycleLayoutKt.initVertical
+import com.zihuan.baseadapter.RecycleLayoutKt.initGrid
+import com.zihuan.baseadapter.RecycleLayoutKt.initHorizontal
+import com.zihuan.baseadapter.RecycleLayoutKt.initVertical
 import kotlinx.android.synthetic.main.recycle_layout.view.*
 
 /***
@@ -81,21 +81,23 @@ class RecycleAssViewLayout : FrameLayout {
             when (type) {
                 LinearLayoutManager.VERTICAL -> re_view.initVertical(rAdapter)
                 LinearLayoutManager.HORIZONTAL -> re_view.initHorizontal(rAdapter)
-                else ->
+                else -> {
                     re_view.initGrid(type, rAdapter)
-            }
-            //如果是多带head的grid
-            if (adapter is StickyHeaderGridAdapter && re_view.layoutManager !is StickyHeaderGridLayoutManager) {
-                var layoutManager = re_view.layoutManager as GridLayoutManager
-                layoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
-                    override fun getSpanSize(position: Int): Int {
-                        return when (adapter.getItemViewType(position)) {
-                            0 -> type
-                            else -> 1
+                    //如果是多带head的grid
+                    if (adapter is StickyHeaderGridAdapter && re_view.layoutManager !is StickyHeaderGridLayoutManager) {
+                        var layoutManager = re_view.layoutManager as GridLayoutManager
+                        layoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+                            override fun getSpanSize(position: Int): Int {
+                                return when (adapter.getItemViewType(position)) {
+                                    0 -> type
+                                    else -> 1
+                                }
+                            }
                         }
                     }
                 }
             }
+
             return this
         }
 
@@ -145,12 +147,12 @@ class RecycleAssViewLayout : FrameLayout {
          * draw  色值
          * isDrawBottom 是否画最后一条分割线
          */
-        fun setDivider(draw: Int, isDrawBottom: Boolean = true): Builder {
-            var rvd = RecycleViewDivider(mContext, LinearLayoutManager.VERTICAL, draw)
-            rvd.setDrawBotton(isDrawBottom)
-            getRView().addItemDecoration(rvd)
-            return this
-        }
+//        fun setDivider(draw: Int, isDrawBottom: Boolean = true): Builder {
+//            var rvd = RecycleViewDivider(mContext, LinearLayoutManager.VERTICAL, draw)
+//            rvd.setDrawBotton(isDrawBottom)
+//            getRView().addItemDecoration(rvd)
+//            return this
+//        }
 
         fun setLayoutManager(layoutManager: RecyclerView.LayoutManager): Builder {
             getRView().layoutManager = layoutManager

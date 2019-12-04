@@ -3,7 +3,6 @@ package com.zihuan.baseadapter;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,7 +30,7 @@ public class SuperRecycleAdapter<T extends RecyclerView.ViewHolder> extends Recy
      */
     @Override
     public int getItemCount() {
-        return baseDatas == null || baseDatas.size() == 0 ? 0 : baseDatas.size();
+        return baseDatas == null || baseDatas.isEmpty() ? 0 : baseDatas.size();
     }
 
 

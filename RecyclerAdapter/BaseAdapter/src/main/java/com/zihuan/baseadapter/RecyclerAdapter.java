@@ -11,7 +11,7 @@ import java.util.List;
 
 
 /**
- * @author Created by zihuan
+ * @author Zihuan
  */
 public abstract class RecyclerAdapter extends SuperRecycleAdapter<RecyclerViewHolder> {
     public Context mContext;

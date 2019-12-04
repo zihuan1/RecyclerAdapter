@@ -2,6 +2,7 @@ package com.zihuan.baseadapter
 
 import android.content.Context
 import java.util.*
+import kotlin.collections.ArrayList
 
 class RecycleMultipleAdapter(context: Context) : StickyHeaderGridAdapter(context) {
     override fun getHeadLayoutResId(): Int {
@@ -17,7 +18,7 @@ class RecycleMultipleAdapter(context: Context) : StickyHeaderGridAdapter(context
     private val mItemList = ArrayList<List<Entity>>()
 
 
-    fun upDate(head: List<String>, list: List<List<Entity>>) {
+    fun upDate(head: ArrayList<String>, list: ArrayList<ArrayList<Entity>>) {
         mHeadList.clear()
         mItemList.clear()
         mItemList.addAll(list)

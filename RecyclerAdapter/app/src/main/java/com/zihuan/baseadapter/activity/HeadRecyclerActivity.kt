@@ -2,16 +2,16 @@ package com.zihuan.baseadapter.activity
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.helper.ItemTouchHelper
 import android.view.View
 import android.widget.Toast
 import com.scwang.smartrefresh.header.MaterialHeader
 import com.scwang.smartrefresh.layout.SmartRefreshLayout
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter
-import com.zihuan.baseadapter.*
+import com.zihuan.baseadapter.Entity
+import com.zihuan.baseadapter.R
+import com.zihuan.baseadapter.RecycleMultipleAdapter
+import com.zihuan.baseadapter.ViewOnHeadClick
 import kotlinx.android.synthetic.main.activity_headrecycle.*
-import kotlinx.android.synthetic.main.recycle_layout.*
 
 
 class HeadRecyclerActivity : AppCompatActivity(), ViewOnHeadClick {

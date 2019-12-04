@@ -28,8 +28,9 @@ class LeftSlidDeleteActivity2 : Activity(), ViewOnItemClick {
                 .setData(mDemoData)
         var zhLeftScrollViewHelper = ZHAutoScrollViewHelper.getInstance()
         zhLeftScrollViewHelper.bindRecyclerView(rv_left_slid.getRecyclerView())
-        itemTouchHelper = ItemTouchHelper(DragItemTouchHelper(demoAdapter, demoAdapter.baseDatas as List<ArrayList<Entity>>))
-        itemTouchHelper.attachToRecyclerView(rv_left_slid.getRecyclerView())
+
+//        itemTouchHelper = ItemTouchHelper(DragItemTouchHelper(demoAdapter, demoAdapter.baseDatas as List<ArrayList<Entity>>))
+//        itemTouchHelper.attachToRecyclerView(rv_left_slid.getRecyclerView())
     }
 
     lateinit var itemTouchHelper: ItemTouchHelper
