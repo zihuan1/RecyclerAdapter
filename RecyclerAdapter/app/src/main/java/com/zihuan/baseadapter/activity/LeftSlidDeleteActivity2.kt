@@ -2,7 +2,6 @@ package com.zihuan.baseadapter.activity
 
 import android.app.Activity
 import android.os.Bundle
-import android.support.v7.widget.helper.ItemTouchHelper
 import android.view.View
 import android.widget.Toast
 import com.zihuan.autoscrollview.ZHAutoScrollViewHelper
@@ -24,16 +23,12 @@ class LeftSlidDeleteActivity2 : Activity(), ViewOnItemClick {
             mDemoData.add("昵称$i")
         }
         rv_left_slid.buildVerticalLayout(demoAdapter)
-                .setPullEnabled(false)
                 .setData(mDemoData)
         var zhLeftScrollViewHelper = ZHAutoScrollViewHelper.getInstance()
         zhLeftScrollViewHelper.bindRecyclerView(rv_left_slid.getRecyclerView())
 
-//        itemTouchHelper = ItemTouchHelper(DragItemTouchHelper(demoAdapter, demoAdapter.baseDatas as List<ArrayList<Entity>>))
-//        itemTouchHelper.attachToRecyclerView(rv_left_slid.getRecyclerView())
     }
 
-    lateinit var itemTouchHelper: ItemTouchHelper
 
 
 }

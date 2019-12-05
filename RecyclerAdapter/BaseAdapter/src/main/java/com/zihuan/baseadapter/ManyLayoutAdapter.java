@@ -2,12 +2,13 @@ package com.zihuan.baseadapter;
 
 import android.app.Activity;
 import android.content.Context;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +39,6 @@ public abstract class ManyLayoutAdapter extends RecyclerView.Adapter<RecyclerVie
     }
 
 
-
     private void instanceofObj(Object object) {
         mListener = object;
         if (object instanceof Fragment) {
@@ -62,7 +62,7 @@ public abstract class ManyLayoutAdapter extends RecyclerView.Adapter<RecyclerVie
     public RecyclerViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         View view;
         view = LayoutInflater.from(viewGroup.getContext()).inflate(getLayoutResId().get(viewType), viewGroup, false);
-        RecyclerViewHolder holder = new RecyclerViewHolder(view, viewType,mListener);
+        RecyclerViewHolder holder = new RecyclerViewHolder(view, viewType, mListener);
         return holder;
     }
 

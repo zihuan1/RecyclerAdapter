@@ -1,15 +1,12 @@
 package com.zihuan.baseadapter.activity
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import com.scwang.smartrefresh.header.MaterialHeader
-import com.scwang.smartrefresh.layout.SmartRefreshLayout
-import com.scwang.smartrefresh.layout.footer.ClassicsFooter
+import androidx.appcompat.app.AppCompatActivity
 import com.zihuan.baseadapter.Entity
 import com.zihuan.baseadapter.R
 import com.zihuan.baseadapter.RecycleMultipleAdapter
 import com.zihuan.baseadapter.StickyHeaderGridLayoutManager
-import kotlinx.android.synthetic.main.activity_headrecycle.*
+import kotlinx.android.synthetic.main.activity_headrecycle2.*
 
 
 class HeadRecyclerActivity2 : AppCompatActivity() {
@@ -39,18 +36,9 @@ class HeadRecyclerActivity2 : AppCompatActivity() {
         var adapter = RecycleMultipleAdapter(this)
         var layoutManager = StickyHeaderGridLayoutManager(8)
         rav_layout.buildGridLayout(adapter, 8)
-                .setLayoutManager(layoutManager)
+        rav_layout.getRecyclerView().layoutManager = layoutManager
         adapter.upDate(mDemoData, Item)
-        rav_layout.getRecyclerView().isNestedScrollingEnabled=true
+        rav_layout.getRecyclerView().isNestedScrollingEnabled = true
     }
 
-    companion object {
-        //static 代码段可以防止内存泄露
-        init {
-            //设置全局的Header构建器
-            SmartRefreshLayout.setDefaultRefreshHeaderCreator { context, _ -> MaterialHeader(context) }
-            //设置全局的Footer构建器
-            SmartRefreshLayout.setDefaultRefreshFooterCreator { context, _ -> ClassicsFooter(context).setDrawableSize(20f) }
-        }
-    }
 }

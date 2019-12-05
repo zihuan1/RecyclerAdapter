@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import com.zihuan.baseadapter.Demo3Adapter
+import com.zihuan.baseadapter.R
 import com.zihuan.baseadapter.ViewOnItemClick
 import com.zihuan.baseadapter.slideswaphelper.PlusItemSlideCallback
 import com.zihuan.baseadapter.slideswaphelper.WItemTouchHelperPlus
@@ -18,7 +19,7 @@ class LeftSlidDeleteActivity : Activity(), ViewOnItemClick {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(com.zihuan.baseadapter.R.layout.activity_left_slid_layout)
+        setContentView(R.layout.activity_left_slid_layout)
         var demoAdapter = Demo3Adapter(this)
         var mDemoData = ArrayList<String>()
         for (i in 0..30) {
@@ -26,7 +27,6 @@ class LeftSlidDeleteActivity : Activity(), ViewOnItemClick {
         }
 
         rv_left_slid.buildVerticalLayout(demoAdapter)
-                .setPullEnabled(false)
                 .setData(mDemoData)
         //侧滑布局被覆盖
 //        val callback = PlusItemSlideCallback()

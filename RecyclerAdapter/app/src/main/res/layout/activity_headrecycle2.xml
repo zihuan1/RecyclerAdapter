@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <android.support.v4.widget.NestedScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true">
@@ -21,13 +21,13 @@
                 android:layout_centerHorizontal="true"
                 android:text="测试" />
 
-            <com.zihuan.baseadapter.RecycleAssViewLayout
+            <com.zihuan.view.crvlibrary.ZCleverRecyclerView
                 android:id="@+id/rav_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@+id/tv_test" />
 
         </RelativeLayout>
-    </android.support.v4.widget.NestedScrollView>
+    </androidx.core.widget.NestedScrollView>
 
 </LinearLayout>

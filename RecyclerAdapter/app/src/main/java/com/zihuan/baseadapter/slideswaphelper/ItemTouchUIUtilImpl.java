@@ -17,11 +17,12 @@
 package com.zihuan.baseadapter.slideswaphelper;
 
 import android.graphics.Canvas;
-import android.support.v4.view.ViewCompat;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.helper.ItemTouchHelper;
-import android.support.v7.widget.helper.ItemTouchUIUtil;
+import androidx.core.view.ViewCompat;
 import android.view.View;
+
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.ItemTouchUIUtil;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.zihuan.baseadapter.R;
 
@@ -78,8 +79,10 @@ class ItemTouchUIUtilImpl {
 
         @Override
         public void clearView(View view) {
-            ViewCompat.setTranslationX(view, 0f);
-            ViewCompat.setTranslationY(view, 0f);
+            view.setTranslationX(0f);
+            view.setTranslationY(0f);
+//            ViewCompat.setTranslationX(view, 0f);
+//            ViewCompat.setTranslationY(view, 0f);
         }
 
         @Override

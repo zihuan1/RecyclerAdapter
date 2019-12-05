@@ -1,10 +1,10 @@
 package com.zihuan.baseadapter.activity
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.zihuan.baseadapter.*
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -25,9 +25,9 @@ class DataBindActivity : AppCompatActivity() {
             else entity.url = R.mipmap.ic_launcher.toString()
             mDemoData.add(entity)
         }
-        var adapter=RecyclerBindAdapter(this, R.layout.rv_bind_layout)
-        adapter.setOnItemClick { view, position ->
-            Log.e("点击","点击")
+        var adapter = CompatibleDatabindAdapter(this, R.layout.rv_bind_layout)
+        adapter.setOnItemClick { _, _ ->
+            Log.e("点击", "点击")
         }
         rav_layout.buildVerticalLayout(adapter)
                 .setData(mDemoData)

@@ -5,8 +5,9 @@ import android.util.TypedValue
 import android.view.View
 import android.widget.TextView
 import com.zihuan.baseadapter.slideswaphelper.SlideSwapAction
+import com.zihuan.view.crvlibrary.ZRecyclerData
 
-class Demo3Adapter(`object`: Any?) : SpecialHolderAdapter<Demo3Adapter.LeftScrollHolder>(`object`) {
+class Demo3Adapter(`object`: Any?) : SpecialHolderAdapter<Demo3Adapter.LeftScrollHolder>(`object`), ZRecyclerData {
     var mListener = `object`
 
     override fun convert(holder: LeftScrollHolder, position: Int, context: Context) {

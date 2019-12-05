@@ -6,8 +6,11 @@ import android.os.Bundle
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.Logger
 import com.orhanobut.logger.PrettyFormatStrategy
-import com.zihuan.baseadapter.RecyclerAdapterConfig
+import com.scwang.smartrefresh.header.MaterialHeader
+import com.scwang.smartrefresh.layout.SmartRefreshLayout
+import com.scwang.smartrefresh.layout.footer.ClassicsFooter
 import com.zihuan.baseadapter.R
+import com.zihuan.baseadapter.RecyclerAdapterConfig
 import com.zihuan.baseadapter.RecyclerImageImp
 import kotlinx.android.synthetic.main.activity_home.*
 
@@ -47,4 +50,10 @@ class MainActivity : Activity() {
         Logger.addLogAdapter(AndroidLogAdapter(formatStrategy))
         RecyclerAdapterConfig.getInstance().bindImageLoading = RecyclerImageImp()
     }
+
+    init {
+        SmartRefreshLayout.setDefaultRefreshHeaderCreator { context, layout -> MaterialHeader(context) }
+        SmartRefreshLayout.setDefaultRefreshFooterCreator { context, layout -> ClassicsFooter(context).setDrawableSize(20f) }
+    }
+
 }

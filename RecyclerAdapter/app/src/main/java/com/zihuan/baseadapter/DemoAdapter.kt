@@ -1,8 +1,9 @@
 package com.zihuan.baseadapter
 
 import android.content.Context
+import com.zihuan.view.crvlibrary.ZRecyclerData
 
-class DemoAdapter(`object`: Any?) : RecyclerAdapter(`object`) {
+class DemoAdapter(`object`: Any?) : RecyclerAdapter(`object`),ZRecyclerData {
     override fun convert(holder: RecyclerViewHolder, position: Int, context: Context) {
         var entity = getEntity<String>(position)
         var item_text = holder.getTextView(R.id.item_text)

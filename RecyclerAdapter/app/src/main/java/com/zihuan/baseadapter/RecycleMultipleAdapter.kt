@@ -1,10 +1,11 @@
 package com.zihuan.baseadapter
 
 import android.content.Context
+import com.zihuan.view.crvlibrary.ZRecyclerData
 import java.util.*
 import kotlin.collections.ArrayList
 
-class RecycleMultipleAdapter(context: Context) : StickyHeaderGridAdapter(context) {
+class RecycleMultipleAdapter(context: Context) : StickyHeaderGridAdapter(context), ZRecyclerData {
     override fun getHeadLayoutResId(): Int {
         return R.layout.head_layout
     }

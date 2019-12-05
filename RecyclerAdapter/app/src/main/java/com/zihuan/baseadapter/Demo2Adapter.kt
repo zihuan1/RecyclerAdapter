@@ -5,8 +5,9 @@ import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
 import com.zihuan.autoscrollview.ZHAutoScrollView
+import com.zihuan.view.crvlibrary.ZRecyclerData
 
-class Demo2Adapter(`object`: Any?) : RecyclerAdapter(`object`) {
+class Demo2Adapter(`object`: Any?) : RecyclerAdapter(`object`) , ZRecyclerData {
     override fun convert(holder: RecyclerViewHolder, position: Int, context: Context) {
         var entity = getEntity<String>(position)
         var scroll_item = holder.getTView<ZHAutoScrollView>(R.id.scroll_item)
