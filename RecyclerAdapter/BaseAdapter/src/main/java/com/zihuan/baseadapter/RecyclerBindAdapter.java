@@ -15,7 +15,7 @@ import androidx.fragment.app.Fragment;
 
 
 /**
- * Created by zihuan
+ * Created by Zihuan
  */
 public class RecyclerBindAdapter extends SuperRecycleAdapter<RecyclerViewHolder> {
     ViewOnItemClick onItemClick;
@@ -25,12 +25,12 @@ public class RecyclerBindAdapter extends SuperRecycleAdapter<RecyclerViewHolder>
     private Object mObject;
     private static RecyclerBindImageLoading mBindImageLoading;
 
-    public RecyclerBindAdapter(Object object, int layoutRes) {
-        instanceofObj(object, layoutRes);
+    public RecyclerBindAdapter(Object obj, int layoutRes) {
+        instanceofObj(obj, layoutRes);
     }
 
-    public RecyclerBindAdapter(Object object, int layoutRes, boolean disableClick) {
-        instanceofObj(object, layoutRes);
+    public RecyclerBindAdapter(Object obj, int layoutRes, boolean disableClick) {
+        instanceofObj(obj, layoutRes);
         if (disableClick) {
             this.onItemClick = null;
             this.longClick = null;
@@ -58,11 +58,11 @@ public class RecyclerBindAdapter extends SuperRecycleAdapter<RecyclerViewHolder>
 
     /***
      * 当一个页面中有多个RecyclerView的时候用这个方法设置点击事件
-     * @param object
+     * @param obj
      */
-    public void setOnItemClick(ViewOnItemClick object) {
-        if (object != null) {
-            mObject = object;
+    public void setOnItemClick(ViewOnItemClick obj) {
+        if (obj != null) {
+            mObject = obj;
         }
     }
 
