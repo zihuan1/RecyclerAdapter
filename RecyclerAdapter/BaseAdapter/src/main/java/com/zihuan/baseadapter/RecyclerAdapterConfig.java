@@ -1,18 +1,20 @@
 package com.zihuan.baseadapter;
 
 import android.content.Context;
+import android.view.View;
 import android.widget.ImageView;
 
 import java.util.regex.Pattern;
 
 /**
- * @author zihuan
+ * @author Zihuan
  * @Description
  * @date 2019/9/28 10:55
  */
 public class RecyclerAdapterConfig {
     private static RecyclerAdapterConfig mConfig;
     private Pattern mPattern = Pattern.compile("^[-\\+]?[\\d]*$");
+    private RecyclerBindImageLoading mBindImageLoading;
 
     public static RecyclerAdapterConfig getInstance() {
         if (null == mConfig) {
@@ -21,7 +23,6 @@ public class RecyclerAdapterConfig {
         return mConfig;
     }
 
-    private RecyclerBindImageLoading mBindImageLoading;
 
     public RecyclerBindImageLoading getBindImageLoading() {
         if (null == mBindImageLoading) {
@@ -58,4 +59,5 @@ public class RecyclerAdapterConfig {
     public boolean isInt(String url) {
         return mPattern.matcher(url).matches();
     }
+
 }

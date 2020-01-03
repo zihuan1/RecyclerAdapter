@@ -12,7 +12,6 @@ import java.util.List;
 
 
 /**
- *
  * @author Zihuan
  */
 public abstract class RecyclerAdapter extends SuperRecycleAdapter<RecyclerViewHolder> {
@@ -89,7 +88,6 @@ public abstract class RecyclerAdapter extends SuperRecycleAdapter<RecyclerViewHo
      * 当一个页面中的item中的某个view需要单独添加点击事件的时候用这个方法
      * @param viewid
      */
-    @Deprecated
     public RecyclerAdapter setOnChildClick(int... viewid) {
         if (mObject instanceof ViewOnItemChildClick) {
             itemChildClick = (ViewOnItemChildClick) mObject;

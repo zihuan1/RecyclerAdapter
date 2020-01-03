@@ -9,6 +9,7 @@ import java.util.List;
 
 /**
  * 基类所有的适配器均集成此类
+ *
  * @author zihuan
  */
 public class SuperRecycleAdapter<T extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<T> {
