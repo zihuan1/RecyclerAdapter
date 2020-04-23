@@ -14,8 +14,7 @@ public class RecyclerImageImp implements RecyclerBindImageLoading {
 
     @Override
     public void displayImage(Context context, ImageView view, String url) {
-        Glide.with(MainApplication.mainApplication).load(url);
-
+        Glide.with(MainApplication.mainApplication).load(url).into(view);
     }
 
     @Override

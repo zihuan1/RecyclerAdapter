@@ -87,7 +87,7 @@ public class RecyclerBindAdapter extends SuperRecycleAdapter<RecyclerViewHolder>
         mBindImageLoading = imageLoader;
     }
 
-    @BindingAdapter({"android:src"})
+    @BindingAdapter({"imageUrl"})
     public static void setImageResource(ImageView imageView, String resource) {
         if (TextUtils.isEmpty(resource)) {
             return;
