@@ -9,9 +9,14 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 
 class ChildClickActivity : AppCompatActivity(), ViewOnItemClick, ViewOnItemChildClick {
-    override fun setOnChildClick(view_id: Int, position: Int) {
-        Toast.makeText(this, "点击了 子 事件 $view_id $position", Toast.LENGTH_SHORT).show()
+    override fun setOnChildClick(view: View, position: Int) {
+        Toast.makeText(this, "点击了 子 事件 ${view.id} $position", Toast.LENGTH_SHORT).show()
     }
+
+    override fun setOnChildLongClick(view: View, position: Int) {
+        Toast.makeText(this, "长按了 子 事件 ${view.id} $position", Toast.LENGTH_SHORT).show()
+    }
+
 
     override fun setOnItemClickListener(view: View?, postion: Int) {
         Toast.makeText(this, "点击了Item上的事件 $postion", Toast.LENGTH_SHORT).show()

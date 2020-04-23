@@ -79,7 +79,14 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder implements View.
                 @Override
                 public void onClick(View v) {
                     //应该是返回当前view
-                    itemChildClick.setOnChildClick(view.getId(), getAdapterPosition());
+                    itemChildClick.setOnChildClick(view, getAdapterPosition());
+                }
+            });
+            view.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    itemChildClick.setOnChildLongClick(view, getAdapterPosition());
+                    return true;
                 }
             });
         }
