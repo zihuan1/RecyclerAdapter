@@ -37,7 +37,8 @@ class RefreshLoadMoreActivity : AppCompatActivity(), ViewOnItemClick {
 
         })
         rav_layout.buildVerticalLayout(demoAdapter)
-                .setData(mDemoData)
+//                .setData(mDemoData)
+        demoAdapter.update = mDemoData
     }
 
 }

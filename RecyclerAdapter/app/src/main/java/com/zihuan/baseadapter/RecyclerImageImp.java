@@ -20,6 +20,5 @@ public class RecyclerImageImp implements RecyclerBindImageLoading {
     @Override
     public void displayImage(Context context, ImageView imageView, Integer resId) {
         imageView.setImageResource(resId);
-
     }
 }

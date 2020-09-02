@@ -45,6 +45,16 @@ public class SuperRecycleAdapter<T extends RecyclerView.ViewHolder> extends Recy
         return (ArrayList<T>) baseDatas;
     }
 
+    private List update;
+
+    public List getUpdate() {
+        return baseDatas;
+    }
+
+    public void setUpdate(List date) {
+        update(date);
+    }
+
     public void update(List list) {
         baseDatas.clear();
         baseDatas.addAll(list);
@@ -66,4 +76,5 @@ public class SuperRecycleAdapter<T extends RecyclerView.ViewHolder> extends Recy
     public int getListSize() {
         return baseDatas.size();
     }
+
 }
