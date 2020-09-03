@@ -27,8 +27,14 @@ class DataBindActivity : AppCompatActivity() {
         }
         var adapter = CompatibleDatabindAdapter(this, R.layout.rv_bind_layout)
         adapter.setOnItemClick { _, _ ->
-            Log.e("点击", "点击")
+            Log.e("点击", "setOnItemClick")
         }
+        adapter.setOnChildClick(object : SimpleItemChildClick() {
+            override fun setOnChildClick(view: View?, position: Int) {
+                Log.e("点击", "setOnChildClick")
+            }
+
+        },R.id.iv_head)
         rav_layout.buildVerticalLayout(adapter)
                 .setData(mDemoData)
     }
