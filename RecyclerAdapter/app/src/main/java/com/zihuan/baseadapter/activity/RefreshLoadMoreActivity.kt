@@ -8,7 +8,7 @@ import com.scwang.smartrefresh.layout.api.RefreshLayout
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener
 import com.zihuan.baseadapter.DemoAdapter
 import com.zihuan.baseadapter.R
-import com.zihuan.baseadapter.ViewOnItemClick
+import com.zihuan.baseadapter.listener.ViewOnItemClick
 import kotlinx.android.synthetic.main.activity_main.*
 
 

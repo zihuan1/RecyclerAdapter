@@ -3,9 +3,9 @@ package com.zihuan.baseadapter.activity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.zihuan.baseadapter.*
+import com.zihuan.baseadapter.listener.SimpleChildClick
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -29,7 +29,7 @@ class DataBindActivity : AppCompatActivity() {
         adapter.setOnItemClick { _, _ ->
             Log.e("点击", "setOnItemClick")
         }
-        adapter.setOnChildClick(object : SimpleItemChildClick() {
+        adapter.setOnChildClick(object : SimpleChildClick() {
             override fun setOnChildClick(view: View?, position: Int) {
                 Log.e("点击", "setOnChildClick")
             }

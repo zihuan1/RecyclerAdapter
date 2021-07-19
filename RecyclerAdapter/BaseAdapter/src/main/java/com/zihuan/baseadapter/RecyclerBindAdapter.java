@@ -13,6 +13,11 @@ import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 import androidx.fragment.app.Fragment;
 
+import com.zihuan.baseadapter.listener.RecyclerBindImageLoading;
+import com.zihuan.baseadapter.listener.ViewOnItemChildClick;
+import com.zihuan.baseadapter.listener.ViewOnItemClick;
+import com.zihuan.baseadapter.listener.ViewOnItemLongClick;
+
 
 /**
  * Created by Zihuan

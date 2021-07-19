@@ -1,8 +1,9 @@
 package com.zihuan.baseadapter;
 
 import android.content.Context;
-import android.view.View;
 import android.widget.ImageView;
+
+import com.zihuan.baseadapter.listener.RecyclerBindImageLoading;
 
 import java.util.regex.Pattern;
 

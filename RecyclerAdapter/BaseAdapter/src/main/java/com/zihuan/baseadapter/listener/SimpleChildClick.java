@@ -1,8 +1,10 @@
-package com.zihuan.baseadapter;
+package com.zihuan.baseadapter.listener;
 
 import android.view.View;
 
-public class SimpleItemChildClick implements ViewOnItemChildClick {
+import com.zihuan.baseadapter.listener.ViewOnItemChildClick;
+
+public class SimpleChildClick implements ViewOnItemChildClick {
     @Override
     public void setOnChildClick(View view, int position) {
 

@@ -6,7 +6,7 @@ import android.view.View
 import android.widget.Toast
 import com.zihuan.baseadapter.Demo3Adapter
 import com.zihuan.baseadapter.R
-import com.zihuan.baseadapter.ViewOnItemClick
+import com.zihuan.baseadapter.listener.ViewOnItemClick
 import com.zihuan.baseadapter.slideswaphelper.PlusItemSlideCallback
 import com.zihuan.baseadapter.slideswaphelper.WItemTouchHelperPlus
 import kotlinx.android.synthetic.main.activity_left_slid_layout.*

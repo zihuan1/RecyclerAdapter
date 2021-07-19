@@ -7,6 +7,10 @@ import android.widget.TextView;
 import androidx.databinding.ViewDataBinding;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.zihuan.baseadapter.listener.ViewOnItemChildClick;
+import com.zihuan.baseadapter.listener.ViewOnItemClick;
+import com.zihuan.baseadapter.listener.ViewOnItemLongClick;
+
 
 /**
  * @author Created by zihuan on 2016/9/1.

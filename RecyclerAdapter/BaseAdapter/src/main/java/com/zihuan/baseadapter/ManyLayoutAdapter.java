@@ -10,6 +10,9 @@ import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.zihuan.baseadapter.listener.ViewOnItemClick;
+import com.zihuan.baseadapter.listener.ViewOnItemLongClick;
+
 import java.util.ArrayList;
 import java.util.List;
 

@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.zihuan.baseadapter.Entity
 import com.zihuan.baseadapter.R
 import com.zihuan.baseadapter.RecycleMultipleAdapter
-import com.zihuan.baseadapter.ViewOnHeadClick
+import com.zihuan.baseadapter.listener.ViewOnHeadClick
 import kotlinx.android.synthetic.main.activity_headrecycle.*
 
 
@@ -34,7 +34,7 @@ class HeadRecyclerActivity : AppCompatActivity(), ViewOnHeadClick {
             Item.add(list)
         }
         var adapter = RecycleMultipleAdapter(this)
-        rav_layout.buildGridLayout(adapter, 8)
+        rav_layout.buildGridLayout(adapter, 1)
 
         adapter.upDate(mDemoData, Item)
 

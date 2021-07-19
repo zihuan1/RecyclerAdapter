@@ -5,6 +5,8 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.zihuan.baseadapter.*
+import com.zihuan.baseadapter.listener.ViewOnItemChildClick
+import com.zihuan.baseadapter.listener.ViewOnItemClick
 import kotlinx.android.synthetic.main.activity_main.*
 
 

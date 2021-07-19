@@ -4,6 +4,7 @@ import android.content.Context;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.zihuan.baseadapter.listener.RecyclerBindImageLoading;
 
 /**
  * @author zihuan

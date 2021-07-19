@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.Toast
 import com.zihuan.autoscrollview.ZHAutoScrollViewHelper
 import com.zihuan.baseadapter.*
+import com.zihuan.baseadapter.listener.ViewOnItemClick
 import kotlinx.android.synthetic.main.activity_left_slid_layout.*
 
 
